@@ -1,0 +1,165 @@
+[
+    {
+        "id": "h001",
+        "name": "Apollo Hospitals Bangalore",
+        "city": "Bangalore",
+        "treatments": [
+            "knee replacement",
+            "cardiac surgery",
+            "chemotherapy",
+            "dialysis",
+            "angioplasty"
+        ],
+        "icu_beds": 12,
+        "general_beds": 45,
+        "network_policies": [
+            "Star Health",
+            "HDFC Ergo",
+            "Care Health"
+        ],
+        "rating": 4.7
+    },
+    {
+        "id": "h002",
+        "name": "Manipal Hospital Bangalore",
+        "city": "Bangalore",
+        "treatments": [
+            "cataract surgery",
+            "knee replacement",
+            "hip replacement",
+            "appendectomy",
+            "maternity"
+        ],
+        "icu_beds": 8,
+        "general_beds": 60,
+        "network_policies": [
+            "Bajaj Allianz",
+            "Niva Bupa",
+            "Care Health"
+        ],
+        "rating": 4.5
+    },
+    {
+        "id": "h003",
+        "name": "Kokilaben Dhirubhai Ambani Hospital Mumbai",
+        "city": "Mumbai",
+        "treatments": [
+            "cardiac surgery",
+            "organ transplant",
+            "chemotherapy",
+            "dialysis",
+            "cardiac bypass"
+        ],
+        "icu_beds": 20,
+        "general_beds": 80,
+        "network_policies": [
+            "Star Health",
+            "HDFC Ergo",
+            "Bajaj Allianz",
+            "Niva Bupa"
+        ],
+        "rating": 4.8
+    },
+    {
+        "id": "h004",
+        "name": "Lilavati Hospital Mumbai",
+        "city": "Mumbai",
+        "treatments": [
+            "maternity",
+            "appendectomy",
+            "cataract surgery",
+            "knee replacement",
+            "angioplasty"
+        ],
+        "icu_beds": 10,
+        "general_beds": 55,
+        "network_policies": [
+            "HDFC Ergo",
+            "Care Health",
+            "Niva Bupa"
+        ],
+        "rating": 4.4
+    },
+    {
+        "id": "h005",
+        "name": "AIIMS Delhi",
+        "city": "Delhi",
+        "treatments": [
+            "cardiac bypass",
+            "organ transplant",
+            "chemotherapy",
+            "dialysis",
+            "hip replacement"
+        ],
+        "icu_beds": 30,
+        "general_beds": 120,
+        "network_policies": [
+            "Star Health",
+            "Care Health",
+            "Bajaj Allianz"
+        ],
+        "rating": 4.9
+    },
+    {
+        "id": "h006",
+        "name": "Fortis Memorial Research Institute Delhi",
+        "city": "Delhi",
+        "treatments": [
+            "knee replacement",
+            "cardiac surgery",
+            "angioplasty",
+            "cataract surgery",
+            "maternity"
+        ],
+        "icu_beds": 15,
+        "general_beds": 70,
+        "network_policies": [
+            "HDFC Ergo",
+            "Star Health",
+            "Niva Bupa",
+            "Bajaj Allianz"
+        ],
+        "rating": 4.6
+    },
+    {
+        "id": "h007",
+        "name": "Apollo Hospitals Chennai",
+        "city": "Chennai",
+        "treatments": [
+            "cardiac bypass",
+            "knee replacement",
+            "dialysis",
+            "organ transplant",
+            "chemotherapy"
+        ],
+        "icu_beds": 18,
+        "general_beds": 65,
+        "network_policies": [
+            "Star Health",
+            "HDFC Ergo",
+            "Care Health",
+            "Niva Bupa"
+        ],
+        "rating": 4.7
+    },
+    {
+        "id": "h008",
+        "name": "MIOT International Chennai",
+        "city": "Chennai",
+        "treatments": [
+            "hip replacement",
+            "appendectomy",
+            "cataract surgery",
+            "maternity",
+            "angioplasty"
+        ],
+        "icu_beds": 9,
+        "general_beds": 50,
+        "network_policies": [
+            "Bajaj Allianz",
+            "Care Health",
+            "Star Health"
+        ],
+        "rating": 4.3
+    }
+]

@@ -1,0 +1,128 @@
+[
+    {
+        "id": "p001",
+        "name": "Star Health Comprehensive",
+        "provider": "Star Health",
+        "covered_treatments": [
+            "knee replacement",
+            "cardiac surgery",
+            "chemotherapy",
+            "dialysis",
+            "cataract surgery",
+            "appendectomy",
+            "angioplasty",
+            "maternity"
+        ],
+        "waiting_period_days": 30,
+        "room_rent_cap": 5000,
+        "sub_limits": {
+            "cataract surgery": 25000,
+            "maternity": 50000,
+            "dialysis": 100000
+        },
+        "exclusions": [
+            "organ transplant",
+            "hip replacement",
+            "cardiac bypass"
+        ]
+    },
+    {
+        "id": "p002",
+        "name": "HDFC Ergo Optima Restore",
+        "provider": "HDFC Ergo",
+        "covered_treatments": [
+            "knee replacement",
+            "cardiac bypass",
+            "organ transplant",
+            "chemotherapy",
+            "dialysis",
+            "hip replacement",
+            "angioplasty",
+            "cataract surgery"
+        ],
+        "waiting_period_days": 90,
+        "room_rent_cap": 7500,
+        "sub_limits": {
+            "cataract surgery": 30000,
+            "organ transplant": 500000
+        },
+        "exclusions": [
+            "maternity",
+            "appendectomy"
+        ]
+    },
+    {
+        "id": "p003",
+        "name": "Bajaj Allianz Health Guard",
+        "provider": "Bajaj Allianz",
+        "covered_treatments": [
+            "cardiac surgery",
+            "cardiac bypass",
+            "angioplasty",
+            "knee replacement",
+            "appendectomy",
+            "cataract surgery",
+            "hip replacement",
+            "dialysis"
+        ],
+        "waiting_period_days": 180,
+        "room_rent_cap": 4000,
+        "sub_limits": {
+            "cardiac bypass": 300000,
+            "hip replacement": 150000
+        },
+        "exclusions": [
+            "organ transplant",
+            "chemotherapy",
+            "maternity"
+        ]
+    },
+    {
+        "id": "p004",
+        "name": "Care Health Advantage",
+        "provider": "Care Health",
+        "covered_treatments": [
+            "maternity",
+            "chemotherapy",
+            "dialysis",
+            "appendectomy",
+            "cataract surgery",
+            "knee replacement",
+            "angioplasty",
+            "cardiac surgery"
+        ],
+        "waiting_period_days": 60,
+        "room_rent_cap": null,
+        "sub_limits": {
+            "maternity": 75000,
+            "chemotherapy": 200000
+        },
+        "exclusions": [
+            "organ transplant",
+            "cardiac bypass",
+            "hip replacement"
+        ]
+    },
+    {
+        "id": "p005",
+        "name": "Niva Bupa ReAssure",
+        "provider": "Niva Bupa",
+        "covered_treatments": [
+            "knee replacement",
+            "hip replacement",
+            "cardiac bypass",
+            "cardiac surgery",
+            "organ transplant",
+            "chemotherapy",
+            "dialysis",
+            "maternity",
+            "cataract surgery",
+            "appendectomy",
+            "angioplasty"
+        ],
+        "waiting_period_days": 365,
+        "room_rent_cap": null,
+        "sub_limits": {},
+        "exclusions": []
+    }
+]
