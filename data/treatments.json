@@ -1,0 +1,122 @@
+[
+    {
+        "id": "t001",
+        "name": "knee replacement",
+        "category": "orthopaedic",
+        "avg_cost_inr": 180000,
+        "risk_level": "medium",
+        "common_exclusions": [
+            "age below 18",
+            "pre-existing deformity"
+        ],
+        "pre_auth_required": true
+    },
+    {
+        "id": "t002",
+        "name": "cardiac bypass",
+        "category": "cardiac",
+        "avg_cost_inr": 350000,
+        "risk_level": "high",
+        "common_exclusions": [
+            "congenital condition",
+            "experimental procedure"
+        ],
+        "pre_auth_required": true
+    },
+    {
+        "id": "t003",
+        "name": "dialysis",
+        "category": "renal",
+        "avg_cost_inr": 50000,
+        "risk_level": "high",
+        "common_exclusions": [
+            "self-inflicted injury"
+        ],
+        "pre_auth_required": false
+    },
+    {
+        "id": "t004",
+        "name": "chemotherapy",
+        "category": "oncology",
+        "avg_cost_inr": 250000,
+        "risk_level": "high",
+        "common_exclusions": [
+            "experimental drugs",
+            "non-allopathic treatment"
+        ],
+        "pre_auth_required": true
+    },
+    {
+        "id": "t005",
+        "name": "cataract surgery",
+        "category": "ophthalmology",
+        "avg_cost_inr": 30000,
+        "risk_level": "low",
+        "common_exclusions": [
+            "cosmetic cataract",
+            "refractive error"
+        ],
+        "pre_auth_required": false
+    },
+    {
+        "id": "t006",
+        "name": "appendectomy",
+        "category": "general surgery",
+        "avg_cost_inr": 60000,
+        "risk_level": "low",
+        "common_exclusions": [
+            "elective removal"
+        ],
+        "pre_auth_required": false
+    },
+    {
+        "id": "t007",
+        "name": "hip replacement",
+        "category": "orthopaedic",
+        "avg_cost_inr": 200000,
+        "risk_level": "medium",
+        "common_exclusions": [
+            "fracture due to accident without cover",
+            "age below 18"
+        ],
+        "pre_auth_required": true
+    },
+    {
+        "id": "t008",
+        "name": "angioplasty",
+        "category": "cardiac",
+        "avg_cost_inr": 150000,
+        "risk_level": "high",
+        "common_exclusions": [
+            "self-inflicted condition",
+            "congenital defect"
+        ],
+        "pre_auth_required": true
+    },
+    {
+        "id": "t009",
+        "name": "organ transplant",
+        "category": "transplant",
+        "avg_cost_inr": 800000,
+        "risk_level": "high",
+        "common_exclusions": [
+            "donor complications",
+            "experimental transplant",
+            "non-approved organ"
+        ],
+        "pre_auth_required": true
+    },
+    {
+        "id": "t010",
+        "name": "maternity",
+        "category": "maternity",
+        "avg_cost_inr": 80000,
+        "risk_level": "low",
+        "common_exclusions": [
+            "surrogacy",
+            "fertility treatment",
+            "abortion"
+        ],
+        "pre_auth_required": false
+    }
+]
