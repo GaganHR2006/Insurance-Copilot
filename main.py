@@ -5,7 +5,7 @@ Insurance Copilot API - Main Entry Point
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import chat, risk_score, eligibility, hospitals, bed_availability
+from routers import chat, risk_score, eligibility, hospitals, bed_availability, upload, notifications
 
 app = FastAPI(
     title="Insurance Copilot API",
@@ -28,6 +28,8 @@ app.include_router(risk_score.router, prefix="/risk-score", tags=["Risk Score"])
 app.include_router(eligibility.router, prefix="/eligibility", tags=["Eligibility"])
 app.include_router(hospitals.router, prefix="/hospitals", tags=["Hospitals"])
 app.include_router(bed_availability.router, prefix="/bed-availability", tags=["Bed Availability"])
+app.include_router(upload.router, prefix="/upload", tags=["Upload"])
+app.include_router(notifications.router, tags=["Notifications"])
 
 
 @app.get("/", tags=["Health"])

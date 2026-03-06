@@ -28,7 +28,8 @@
             "knee replacement",
             "hip replacement",
             "appendectomy",
-            "maternity"
+            "maternity",
+            "cardiac surgery"
         ],
         "icu_beds": 8,
         "general_beds": 60,
@@ -45,10 +46,10 @@
         "city": "Mumbai",
         "treatments": [
             "cardiac surgery",
+            "cardiac bypass",
             "organ transplant",
             "chemotherapy",
-            "dialysis",
-            "cardiac bypass"
+            "dialysis"
         ],
         "icu_beds": 20,
         "general_beds": 80,

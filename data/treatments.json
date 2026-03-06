@@ -2,7 +2,7 @@
     {
         "id": "t001",
         "name": "knee replacement",
-        "category": "orthopaedic",
+        "category": "orthopedic",
         "avg_cost_inr": 180000,
         "risk_level": "medium",
         "common_exclusions": [
@@ -25,6 +25,18 @@
     },
     {
         "id": "t003",
+        "name": "cardiac surgery",
+        "category": "cardiac",
+        "avg_cost_inr": 300000,
+        "risk_level": "high",
+        "common_exclusions": [
+            "congenital condition",
+            "experimental procedure"
+        ],
+        "pre_auth_required": true
+    },
+    {
+        "id": "t004",
         "name": "dialysis",
         "category": "renal",
         "avg_cost_inr": 50000,
@@ -35,7 +47,7 @@
         "pre_auth_required": false
     },
     {
-        "id": "t004",
+        "id": "t005",
         "name": "chemotherapy",
         "category": "oncology",
         "avg_cost_inr": 250000,
@@ -47,7 +59,7 @@
         "pre_auth_required": true
     },
     {
-        "id": "t005",
+        "id": "t006",
         "name": "cataract surgery",
         "category": "ophthalmology",
         "avg_cost_inr": 30000,
@@ -59,7 +71,7 @@
         "pre_auth_required": false
     },
     {
-        "id": "t006",
+        "id": "t007",
         "name": "appendectomy",
         "category": "general surgery",
         "avg_cost_inr": 60000,
@@ -70,9 +82,9 @@
         "pre_auth_required": false
     },
     {
-        "id": "t007",
+        "id": "t008",
         "name": "hip replacement",
-        "category": "orthopaedic",
+        "category": "orthopedic",
         "avg_cost_inr": 200000,
         "risk_level": "medium",
         "common_exclusions": [
@@ -82,7 +94,7 @@
         "pre_auth_required": true
     },
     {
-        "id": "t008",
+        "id": "t009",
         "name": "angioplasty",
         "category": "cardiac",
         "avg_cost_inr": 150000,
@@ -94,7 +106,7 @@
         "pre_auth_required": true
     },
     {
-        "id": "t009",
+        "id": "t010",
         "name": "organ transplant",
         "category": "transplant",
         "avg_cost_inr": 800000,
@@ -107,7 +119,7 @@
         "pre_auth_required": true
     },
     {
-        "id": "t010",
+        "id": "t011",
         "name": "maternity",
         "category": "maternity",
         "avg_cost_inr": 80000,

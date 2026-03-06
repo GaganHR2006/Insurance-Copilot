@@ -1,127 +1,66 @@
 """
-Risk Score Router - Calculates insurance claim risk for a given treatment, hospital, and policy.
+Risk Score Router — PDF-aware policy risk scoring using Groq LLM.
+Accepts optional policy_text from an uploaded PDF for LLM-based analysis.
+Falls back to database fuzzy-matching when no PDF is given.
 """
 
-from typing import List
-
+from typing import List, Optional, Dict, Any
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from services.data_loader import load_hospitals, load_policies, load_treatments
+from services.risk_engine import extract_policy_data, extract_risk_factors, calculate
 
 router = APIRouter()
 
 
 class RiskScoreRequest(BaseModel):
-    disease: str
-    hospital: str
-    policy: str
+    policy_text: Optional[str] = ""   # Raw text from uploaded PDF
+
+
+class RiskFactor(BaseModel):
+    factor: str
+    detail: str
+    severity: str  # "high" | "medium" | "low"
 
 
 class RiskScoreResponse(BaseModel):
-    risk_score: int
-    risk_factors: List[str]
-    hospital_found: bool
-    policy_found: bool
+    total_score: int
+    max_score: int
+    grade: str
+    color: str
     recommendation: str
+    breakdown: Dict[str, int]
+    policy_inputs: Dict[str, Any]
+    risk_factors: List[RiskFactor]
 
 
 @router.post("", response_model=RiskScoreResponse)
-def calculate_risk_score(request: RiskScoreRequest):
+async def calculate_risk_score(request: RiskScoreRequest):
     """
-    Calculate an insurance claim risk score (0-100) for a given disease/treatment,
-    hospital, and policy combination.
-
-    Risk factors are evaluated based on waiting periods, room rent caps,
-    exclusions, network coverage, pre-auth requirements, and sub-limits.
+    Calculate a policy risk score from uploaded PDF text.
+    1. LLM extracts structured policy data (waiting period, network size, etc.)
+    2. Formula calculates risk score (0=safe, 100=risky)
+    3. LLM extracts dynamic risk factors list
     """
-    hospitals = load_hospitals()
-    policies = load_policies()
-    treatments = load_treatments()
+    policy_text = request.policy_text or ""
 
-    disease_lower = request.disease.lower()
-    hospital_lower = request.hospital.lower()
-    policy_lower = request.policy.lower()
+    # Step 1: Extract structured data from PDF text using LLM
+    policy_data = await extract_policy_data(policy_text)
 
-    # Match hospital
-    matched_hospital = next(
-        (h for h in hospitals if hospital_lower in h["name"].lower()), None
-    )
-    # Match policy
-    matched_policy = next(
-        (p for p in policies if policy_lower in p["name"].lower() or policy_lower in p["provider"].lower()),
-        None,
-    )
-    # Match treatment
-    matched_treatment = next(
-        (t for t in treatments if disease_lower in t["name"].lower()), None
-    )
+    # Step 2: Calculate risk score using corrected formula
+    score_result = calculate(policy_data)
 
-    score = 20  # Base score
-    risk_factors: List[str] = []
-
-    if matched_policy:
-        # Waiting period > 180 days
-        if matched_policy.get("waiting_period_days", 0) > 180:
-            score += 20
-            risk_factors.append(
-                f"Long waiting period: {matched_policy['waiting_period_days']} days (>180 days adds risk)"
-            )
-
-        # Room rent cap exists
-        if matched_policy.get("room_rent_cap") is not None:
-            score += 15
-            risk_factors.append(
-                f"Room rent cap of ₹{matched_policy['room_rent_cap']}/day may limit coverage"
-            )
-
-        # Treatment in exclusions
-        exclusions = [e.lower() for e in matched_policy.get("exclusions", [])]
-        if any(disease_lower in excl for excl in exclusions):
-            score += 10
-            risk_factors.append(f"'{request.disease}' found in policy exclusion list")
-
-        # Check sub-limits for treatment category
-        if matched_treatment:
-            sub_limits = matched_policy.get("sub_limits", {})
-            for sub_key in sub_limits:
-                if disease_lower in sub_key.lower() or (matched_treatment["category"].lower() in sub_key.lower()):
-                    score += 5
-                    risk_factors.append(
-                        f"Sub-limit of ₹{sub_limits[sub_key]} applies for '{sub_key}'"
-                    )
-
-    # Hospital not in network for this policy
-    if matched_hospital and matched_policy:
-        provider = matched_policy.get("provider", "")
-        network = [n.lower() for n in matched_hospital.get("network_policies", [])]
-        if provider.lower() not in network:
-            score += 15
-            risk_factors.append(
-                f"Hospital '{matched_hospital['name']}' is NOT in network for '{matched_policy['provider']}'"
-            )
-
-    # Pre-auth required
-    if matched_treatment and matched_treatment.get("pre_auth_required"):
-        score += 10
-        risk_factors.append(
-            f"Pre-authorisation is required for '{matched_treatment['name']}'"
-        )
-
-    # Clamp score to 100
-    score = min(score, 100)
-
-    if score < 40:
-        recommendation = "Low Risk"
-    elif score <= 70:
-        recommendation = "Moderate Risk"
-    else:
-        recommendation = "High Risk"
+    # Step 3: Extract dynamic risk factors from PDF text using LLM
+    raw_factors = await extract_risk_factors(policy_text)
+    risk_factors = [RiskFactor(**f) for f in raw_factors]
 
     return RiskScoreResponse(
-        risk_score=score,
+        total_score=score_result["total_score"],
+        max_score=score_result["max_score"],
+        grade=score_result["grade"],
+        color=score_result["color"],
+        recommendation=score_result["recommendation"],
+        breakdown=score_result["breakdown"],
+        policy_inputs=score_result["policy_inputs"],
         risk_factors=risk_factors,
-        hospital_found=matched_hospital is not None,
-        policy_found=matched_policy is not None,
-        recommendation=recommendation,
     )

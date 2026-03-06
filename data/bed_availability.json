@@ -1,702 +1,702 @@
-﻿[
-    {
-        "hospital_id":  "H001",
-        "hospital":  "Apollo Hospital",
-        "city":  "Mumbai",
-        "icu_beds":  {
-                         "total":  41,
-                         "available":  26
-                     },
-        "general_beds":  {
-                             "total":  486,
-                             "available":  140
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+[
+  {
+    "hospital_id": "H001",
+    "hospital": "Apollo Hospital",
+    "city": "Mumbai",
+    "icu_beds": {
+      "total": 41,
+      "available": 26
     },
-    {
-        "hospital_id":  "H002",
-        "hospital":  "Fortis Hospital",
-        "city":  "Delhi",
-        "icu_beds":  {
-                         "total":  74,
-                         "available":  2
-                     },
-        "general_beds":  {
-                             "total":  168,
-                             "available":  22
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 486,
+      "available": 140
     },
-    {
-        "hospital_id":  "H003",
-        "hospital":  "Manipal Hospital",
-        "city":  "Bengaluru",
-        "icu_beds":  {
-                         "total":  26,
-                         "available":  21
-                     },
-        "general_beds":  {
-                             "total":  152,
-                             "available":  117
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H002",
+    "hospital": "Fortis Hospital",
+    "city": "Delhi",
+    "icu_beds": {
+      "total": 74,
+      "available": 2
     },
-    {
-        "hospital_id":  "H004",
-        "hospital":  "MIOT International",
-        "city":  "Chennai",
-        "icu_beds":  {
-                         "total":  59,
-                         "available":  30
-                     },
-        "general_beds":  {
-                             "total":  175,
-                             "available":  151
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 168,
+      "available": 22
     },
-    {
-        "hospital_id":  "H005",
-        "hospital":  "KIMS Hospital",
-        "city":  "Hyderabad",
-        "icu_beds":  {
-                         "total":  43,
-                         "available":  11
-                     },
-        "general_beds":  {
-                             "total":  211,
-                             "available":  131
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H003",
+    "hospital": "Manipal Hospital",
+    "city": "Bengaluru",
+    "icu_beds": {
+      "total": 26,
+      "available": 21
     },
-    {
-        "hospital_id":  "H006",
-        "hospital":  "Medanta The Medicity",
-        "city":  "Delhi",
-        "icu_beds":  {
-                         "total":  78,
-                         "available":  4
-                     },
-        "general_beds":  {
-                             "total":  376,
-                             "available":  126
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 152,
+      "available": 117
     },
-    {
-        "hospital_id":  "H007",
-        "hospital":  "Ruby Hall Clinic",
-        "city":  "Pune",
-        "icu_beds":  {
-                         "total":  38,
-                         "available":  6
-                     },
-        "general_beds":  {
-                             "total":  72,
-                             "available":  6
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H004",
+    "hospital": "MIOT International",
+    "city": "Chennai",
+    "icu_beds": {
+      "total": 59,
+      "available": 30
     },
-    {
-        "hospital_id":  "H008",
-        "hospital":  "Sterling Hospital",
-        "city":  "Ahmedabad",
-        "icu_beds":  {
-                         "total":  73,
-                         "available":  25
-                     },
-        "general_beds":  {
-                             "total":  381,
-                             "available":  108
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 175,
+      "available": 151
     },
-    {
-        "hospital_id":  "H009",
-        "hospital":  "SMS Hospital",
-        "city":  "Jaipur",
-        "icu_beds":  {
-                         "total":  17,
-                         "available":  8
-                     },
-        "general_beds":  {
-                             "total":  145,
-                             "available":  12
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H005",
+    "hospital": "KIMS Hospital",
+    "city": "Hyderabad",
+    "icu_beds": {
+      "total": 43,
+      "available": 11
     },
-    {
-        "hospital_id":  "H010",
-        "hospital":  "Sanjay Gandhi PGI",
-        "city":  "Lucknow",
-        "icu_beds":  {
-                         "total":  12,
-                         "available":  11
-                     },
-        "general_beds":  {
-                             "total":  183,
-                             "available":  35
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 211,
+      "available": 131
     },
-    {
-        "hospital_id":  "H011",
-        "hospital":  "PGI Chandigarh",
-        "city":  "Chandigarh",
-        "icu_beds":  {
-                         "total":  45,
-                         "available":  6
-                     },
-        "general_beds":  {
-                             "total":  393,
-                             "available":  98
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H006",
+    "hospital": "Medanta The Medicity",
+    "city": "Delhi",
+    "icu_beds": {
+      "total": 78,
+      "available": 4
     },
-    {
-        "hospital_id":  "H012",
-        "hospital":  "Hamidia Hospital",
-        "city":  "Bhopal",
-        "icu_beds":  {
-                         "total":  17,
-                         "available":  17
-                     },
-        "general_beds":  {
-                             "total":  58,
-                             "available":  5
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 376,
+      "available": 126
     },
-    {
-        "hospital_id":  "H013",
-        "hospital":  "New Civil Hospital",
-        "city":  "Surat",
-        "icu_beds":  {
-                         "total":  68,
-                         "available":  9
-                     },
-        "general_beds":  {
-                             "total":  461,
-                             "available":  71
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H007",
+    "hospital": "Ruby Hall Clinic",
+    "city": "Pune",
+    "icu_beds": {
+      "total": 38,
+      "available": 6
     },
-    {
-        "hospital_id":  "H014",
-        "hospital":  "Amrita Hospital",
-        "city":  "Kochi",
-        "icu_beds":  {
-                         "total":  50,
-                         "available":  20
-                     },
-        "general_beds":  {
-                             "total":  57,
-                             "available":  21
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 72,
+      "available": 6
     },
-    {
-        "hospital_id":  "H015",
-        "hospital":  "AIIMS Nagpur",
-        "city":  "Nagpur",
-        "icu_beds":  {
-                         "total":  20,
-                         "available":  7
-                     },
-        "general_beds":  {
-                             "total":  179,
-                             "available":  127
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H008",
+    "hospital": "Sterling Hospital",
+    "city": "Ahmedabad",
+    "icu_beds": {
+      "total": 73,
+      "available": 25
     },
-    {
-        "hospital_id":  "H016",
-        "hospital":  "Kokilaben Dhirubhai Ambani Hospital",
-        "city":  "Mumbai",
-        "icu_beds":  {
-                         "total":  11,
-                         "available":  2
-                     },
-        "general_beds":  {
-                             "total":  147,
-                             "available":  64
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 381,
+      "available": 108
     },
-    {
-        "hospital_id":  "H017",
-        "hospital":  "Sir Ganga Ram Hospital",
-        "city":  "Delhi",
-        "icu_beds":  {
-                         "total":  13,
-                         "available":  9
-                     },
-        "general_beds":  {
-                             "total":  343,
-                             "available":  48
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H009",
+    "hospital": "SMS Hospital",
+    "city": "Jaipur",
+    "icu_beds": {
+      "total": 17,
+      "available": 8
     },
-    {
-        "hospital_id":  "H018",
-        "hospital":  "Sakra World Hospital",
-        "city":  "Bengaluru",
-        "icu_beds":  {
-                         "total":  64,
-                         "available":  7
-                     },
-        "general_beds":  {
-                             "total":  420,
-                             "available":  128
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 145,
+      "available": 12
     },
-    {
-        "hospital_id":  "H019",
-        "hospital":  "Gleneagles Global Hospital",
-        "city":  "Chennai",
-        "icu_beds":  {
-                         "total":  15,
-                         "available":  2
-                     },
-        "general_beds":  {
-                             "total":  113,
-                             "available":  86
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H010",
+    "hospital": "Sanjay Gandhi PGI",
+    "city": "Lucknow",
+    "icu_beds": {
+      "total": 12,
+      "available": 11
     },
-    {
-        "hospital_id":  "H020",
-        "hospital":  "Yashoda Hospital",
-        "city":  "Hyderabad",
-        "icu_beds":  {
-                         "total":  36,
-                         "available":  7
-                     },
-        "general_beds":  {
-                             "total":  281,
-                             "available":  88
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 183,
+      "available": 35
     },
-    {
-        "hospital_id":  "H021",
-        "hospital":  "Deenanath Mangeshkar Hospital",
-        "city":  "Pune",
-        "icu_beds":  {
-                         "total":  22,
-                         "available":  0
-                     },
-        "general_beds":  {
-                             "total":  144,
-                             "available":  87
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H011",
+    "hospital": "PGI Chandigarh",
+    "city": "Chandigarh",
+    "icu_beds": {
+      "total": 45,
+      "available": 6
     },
-    {
-        "hospital_id":  "H022",
-        "hospital":  "Apollo Hospitals",
-        "city":  "Ahmedabad",
-        "icu_beds":  {
-                         "total":  73,
-                         "available":  12
-                     },
-        "general_beds":  {
-                             "total":  483,
-                             "available":  93
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 393,
+      "available": 98
     },
-    {
-        "hospital_id":  "H023",
-        "hospital":  "Santokba Durlabhji Hospital",
-        "city":  "Jaipur",
-        "icu_beds":  {
-                         "total":  42,
-                         "available":  27
-                     },
-        "general_beds":  {
-                             "total":  460,
-                             "available":  139
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H012",
+    "hospital": "Hamidia Hospital",
+    "city": "Bhopal",
+    "icu_beds": {
+      "total": 17,
+      "available": 17
     },
-    {
-        "hospital_id":  "H024",
-        "hospital":  "Era Medical College Hospital",
-        "city":  "Lucknow",
-        "icu_beds":  {
-                         "total":  49,
-                         "available":  18
-                     },
-        "general_beds":  {
-                             "total":  115,
-                             "available":  35
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 58,
+      "available": 5
     },
-    {
-        "hospital_id":  "H025",
-        "hospital":  "Max Super Speciality Hospital",
-        "city":  "Chandigarh",
-        "icu_beds":  {
-                         "total":  10,
-                         "available":  3
-                     },
-        "general_beds":  {
-                             "total":  244,
-                             "available":  84
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H013",
+    "hospital": "New Civil Hospital",
+    "city": "Surat",
+    "icu_beds": {
+      "total": 68,
+      "available": 9
     },
-    {
-        "hospital_id":  "H026",
-        "hospital":  "Bansal Hospital",
-        "city":  "Bhopal",
-        "icu_beds":  {
-                         "total":  33,
-                         "available":  24
-                     },
-        "general_beds":  {
-                             "total":  160,
-                             "available":  97
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 461,
+      "available": 71
     },
-    {
-        "hospital_id":  "H027",
-        "hospital":  "Kirtikar Hospital",
-        "city":  "Surat",
-        "icu_beds":  {
-                         "total":  44,
-                         "available":  8
-                     },
-        "general_beds":  {
-                             "total":  167,
-                             "available":  67
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H014",
+    "hospital": "Amrita Hospital",
+    "city": "Kochi",
+    "icu_beds": {
+      "total": 50,
+      "available": 20
     },
-    {
-        "hospital_id":  "H028",
-        "hospital":  "Lakeshore Hospital",
-        "city":  "Kochi",
-        "icu_beds":  {
-                         "total":  46,
-                         "available":  8
-                     },
-        "general_beds":  {
-                             "total":  471,
-                             "available":  180
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 57,
+      "available": 21
     },
-    {
-        "hospital_id":  "H029",
-        "hospital":  "Alexis Hospital",
-        "city":  "Nagpur",
-        "icu_beds":  {
-                         "total":  69,
-                         "available":  26
-                     },
-        "general_beds":  {
-                             "total":  284,
-                             "available":  197
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H015",
+    "hospital": "AIIMS Nagpur",
+    "city": "Nagpur",
+    "icu_beds": {
+      "total": 20,
+      "available": 7
     },
-    {
-        "hospital_id":  "H030",
-        "hospital":  "Nanavati Max Super Speciality",
-        "city":  "Mumbai",
-        "icu_beds":  {
-                         "total":  11,
-                         "available":  7
-                     },
-        "general_beds":  {
-                             "total":  281,
-                             "available":  131
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 179,
+      "available": 127
     },
-    {
-        "hospital_id":  "H031",
-        "hospital":  "BLK Super Speciality Hospital",
-        "city":  "Delhi",
-        "icu_beds":  {
-                         "total":  62,
-                         "available":  6
-                     },
-        "general_beds":  {
-                             "total":  395,
-                             "available":  173
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H016",
+    "hospital": "Kokilaben Dhirubhai Ambani Hospital",
+    "city": "Mumbai",
+    "icu_beds": {
+      "total": 11,
+      "available": 2
     },
-    {
-        "hospital_id":  "H032",
-        "hospital":  "BGS Gleneagles Global Hospital",
-        "city":  "Bengaluru",
-        "icu_beds":  {
-                         "total":  32,
-                         "available":  4
-                     },
-        "general_beds":  {
-                             "total":  79,
-                             "available":  41
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 147,
+      "available": 64
     },
-    {
-        "hospital_id":  "H033",
-        "hospital":  "Chettinad Hospital",
-        "city":  "Chennai",
-        "icu_beds":  {
-                         "total":  12,
-                         "available":  11
-                     },
-        "general_beds":  {
-                             "total":  386,
-                             "available":  10
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H017",
+    "hospital": "Sir Ganga Ram Hospital",
+    "city": "Delhi",
+    "icu_beds": {
+      "total": 13,
+      "available": 9
     },
-    {
-        "hospital_id":  "H034",
-        "hospital":  "Continental Hospital",
-        "city":  "Hyderabad",
-        "icu_beds":  {
-                         "total":  67,
-                         "available":  3
-                     },
-        "general_beds":  {
-                             "total":  93,
-                             "available":  39
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 343,
+      "available": 48
     },
-    {
-        "hospital_id":  "H035",
-        "hospital":  "Symbiosis University Hospital",
-        "city":  "Pune",
-        "icu_beds":  {
-                         "total":  66,
-                         "available":  19
-                     },
-        "general_beds":  {
-                             "total":  95,
-                             "available":  61
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H018",
+    "hospital": "Sakra World Hospital",
+    "city": "Bengaluru",
+    "icu_beds": {
+      "total": 64,
+      "available": 7
     },
-    {
-        "hospital_id":  "H036",
-        "hospital":  "HCG Cancer Centre",
-        "city":  "Ahmedabad",
-        "icu_beds":  {
-                         "total":  19,
-                         "available":  11
-                     },
-        "general_beds":  {
-                             "total":  471,
-                             "available":  41
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 420,
+      "available": 128
     },
-    {
-        "hospital_id":  "H037",
-        "hospital":  "Fortis Escorts Hospital",
-        "city":  "Jaipur",
-        "icu_beds":  {
-                         "total":  78,
-                         "available":  0
-                     },
-        "general_beds":  {
-                             "total":  434,
-                             "available":  142
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H019",
+    "hospital": "Gleneagles Global Hospital",
+    "city": "Chennai",
+    "icu_beds": {
+      "total": 15,
+      "available": 2
     },
-    {
-        "hospital_id":  "H038",
-        "hospital":  "Charak Hospital",
-        "city":  "Lucknow",
-        "icu_beds":  {
-                         "total":  15,
-                         "available":  2
-                     },
-        "general_beds":  {
-                             "total":  161,
-                             "available":  63
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 113,
+      "available": 86
     },
-    {
-        "hospital_id":  "H039",
-        "hospital":  "Ivy Hospital",
-        "city":  "Chandigarh",
-        "icu_beds":  {
-                         "total":  69,
-                         "available":  24
-                     },
-        "general_beds":  {
-                             "total":  352,
-                             "available":  29
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H020",
+    "hospital": "Yashoda Hospital",
+    "city": "Hyderabad",
+    "icu_beds": {
+      "total": 36,
+      "available": 7
     },
-    {
-        "hospital_id":  "H040",
-        "hospital":  "Narmada Hospital",
-        "city":  "Bhopal",
-        "icu_beds":  {
-                         "total":  12,
-                         "available":  4
-                     },
-        "general_beds":  {
-                             "total":  175,
-                             "available":  65
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 281,
+      "available": 88
     },
-    {
-        "hospital_id":  "H041",
-        "hospital":  "CIMS Hospital",
-        "city":  "Surat",
-        "icu_beds":  {
-                         "total":  25,
-                         "available":  20
-                     },
-        "general_beds":  {
-                             "total":  203,
-                             "available":  131
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H021",
+    "hospital": "Deenanath Mangeshkar Hospital",
+    "city": "Pune",
+    "icu_beds": {
+      "total": 22,
+      "available": 0
     },
-    {
-        "hospital_id":  "H042",
-        "hospital":  "Aster MIMS Hospital",
-        "city":  "Kochi",
-        "icu_beds":  {
-                         "total":  46,
-                         "available":  28
-                     },
-        "general_beds":  {
-                             "total":  86,
-                             "available":  64
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 144,
+      "available": 87
     },
-    {
-        "hospital_id":  "H043",
-        "hospital":  "Wockhardt Hospital",
-        "city":  "Nagpur",
-        "icu_beds":  {
-                         "total":  64,
-                         "available":  4
-                     },
-        "general_beds":  {
-                             "total":  132,
-                             "available":  57
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H022",
+    "hospital": "Apollo Hospitals",
+    "city": "Ahmedabad",
+    "icu_beds": {
+      "total": 73,
+      "available": 12
     },
-    {
-        "hospital_id":  "H044",
-        "hospital":  "Breach Candy Hospital",
-        "city":  "Mumbai",
-        "icu_beds":  {
-                         "total":  47,
-                         "available":  27
-                     },
-        "general_beds":  {
-                             "total":  279,
-                             "available":  35
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 483,
+      "available": 93
     },
-    {
-        "hospital_id":  "H045",
-        "hospital":  "Primus Super Speciality Hospital",
-        "city":  "Delhi",
-        "icu_beds":  {
-                         "total":  28,
-                         "available":  16
-                     },
-        "general_beds":  {
-                             "total":  453,
-                             "available":  63
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H023",
+    "hospital": "Santokba Durlabhji Hospital",
+    "city": "Jaipur",
+    "icu_beds": {
+      "total": 42,
+      "available": 27
     },
-    {
-        "hospital_id":  "H046",
-        "hospital":  "Columbia Asia Hospital",
-        "city":  "Bengaluru",
-        "icu_beds":  {
-                         "total":  30,
-                         "available":  11
-                     },
-        "general_beds":  {
-                             "total":  233,
-                             "available":  176
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 460,
+      "available": 139
     },
-    {
-        "hospital_id":  "H047",
-        "hospital":  "Rajiv Gandhi Govt General Hospital",
-        "city":  "Chennai",
-        "icu_beds":  {
-                         "total":  54,
-                         "available":  11
-                     },
-        "general_beds":  {
-                             "total":  137,
-                             "available":  8
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H024",
+    "hospital": "Era Medical College Hospital",
+    "city": "Lucknow",
+    "icu_beds": {
+      "total": 49,
+      "available": 18
     },
-    {
-        "hospital_id":  "H048",
-        "hospital":  "Omega Hospital",
-        "city":  "Hyderabad",
-        "icu_beds":  {
-                         "total":  41,
-                         "available":  30
-                     },
-        "general_beds":  {
-                             "total":  208,
-                             "available":  86
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "general_beds": {
+      "total": 115,
+      "available": 35
     },
-    {
-        "hospital_id":  "H049",
-        "hospital":  "Surya Mother Child Super Speciality",
-        "city":  "Pune",
-        "icu_beds":  {
-                         "total":  34,
-                         "available":  23
-                     },
-        "general_beds":  {
-                             "total":  229,
-                             "available":  75
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H025",
+    "hospital": "Max Super Speciality Hospital",
+    "city": "Chandigarh",
+    "icu_beds": {
+      "total": 10,
+      "available": 3
     },
-    {
-        "hospital_id":  "H050",
-        "hospital":  "Care Hospital",
-        "city":  "Hyderabad",
-        "icu_beds":  {
-                         "total":  27,
-                         "available":  8
-                     },
-        "general_beds":  {
-                             "total":  350,
-                             "available":  16
-                         },
-        "last_updated":  "2026-03-06T08:00:00Z"
-    }
+    "general_beds": {
+      "total": 244,
+      "available": 84
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H026",
+    "hospital": "Bansal Hospital",
+    "city": "Bhopal",
+    "icu_beds": {
+      "total": 33,
+      "available": 24
+    },
+    "general_beds": {
+      "total": 160,
+      "available": 97
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H027",
+    "hospital": "Kirtikar Hospital",
+    "city": "Surat",
+    "icu_beds": {
+      "total": 44,
+      "available": 8
+    },
+    "general_beds": {
+      "total": 167,
+      "available": 67
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H028",
+    "hospital": "Lakeshore Hospital",
+    "city": "Kochi",
+    "icu_beds": {
+      "total": 46,
+      "available": 8
+    },
+    "general_beds": {
+      "total": 471,
+      "available": 180
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H029",
+    "hospital": "Alexis Hospital",
+    "city": "Nagpur",
+    "icu_beds": {
+      "total": 69,
+      "available": 26
+    },
+    "general_beds": {
+      "total": 284,
+      "available": 197
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H030",
+    "hospital": "Nanavati Max Super Speciality",
+    "city": "Mumbai",
+    "icu_beds": {
+      "total": 11,
+      "available": 7
+    },
+    "general_beds": {
+      "total": 281,
+      "available": 131
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H031",
+    "hospital": "BLK Super Speciality Hospital",
+    "city": "Delhi",
+    "icu_beds": {
+      "total": 62,
+      "available": 6
+    },
+    "general_beds": {
+      "total": 395,
+      "available": 173
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H032",
+    "hospital": "BGS Gleneagles Global Hospital",
+    "city": "Bengaluru",
+    "icu_beds": {
+      "total": 32,
+      "available": 4
+    },
+    "general_beds": {
+      "total": 79,
+      "available": 41
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H033",
+    "hospital": "Chettinad Hospital",
+    "city": "Chennai",
+    "icu_beds": {
+      "total": 12,
+      "available": 11
+    },
+    "general_beds": {
+      "total": 386,
+      "available": 10
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H034",
+    "hospital": "Continental Hospital",
+    "city": "Hyderabad",
+    "icu_beds": {
+      "total": 67,
+      "available": 3
+    },
+    "general_beds": {
+      "total": 93,
+      "available": 39
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H035",
+    "hospital": "Symbiosis University Hospital",
+    "city": "Pune",
+    "icu_beds": {
+      "total": 66,
+      "available": 19
+    },
+    "general_beds": {
+      "total": 95,
+      "available": 61
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H036",
+    "hospital": "HCG Cancer Centre",
+    "city": "Ahmedabad",
+    "icu_beds": {
+      "total": 19,
+      "available": 11
+    },
+    "general_beds": {
+      "total": 471,
+      "available": 41
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H037",
+    "hospital": "Fortis Escorts Hospital",
+    "city": "Jaipur",
+    "icu_beds": {
+      "total": 78,
+      "available": 0
+    },
+    "general_beds": {
+      "total": 434,
+      "available": 142
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H038",
+    "hospital": "Charak Hospital",
+    "city": "Lucknow",
+    "icu_beds": {
+      "total": 15,
+      "available": 2
+    },
+    "general_beds": {
+      "total": 161,
+      "available": 63
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H039",
+    "hospital": "Ivy Hospital",
+    "city": "Chandigarh",
+    "icu_beds": {
+      "total": 69,
+      "available": 24
+    },
+    "general_beds": {
+      "total": 352,
+      "available": 29
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H040",
+    "hospital": "Narmada Hospital",
+    "city": "Bhopal",
+    "icu_beds": {
+      "total": 12,
+      "available": 4
+    },
+    "general_beds": {
+      "total": 175,
+      "available": 65
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H041",
+    "hospital": "CIMS Hospital",
+    "city": "Surat",
+    "icu_beds": {
+      "total": 25,
+      "available": 20
+    },
+    "general_beds": {
+      "total": 203,
+      "available": 131
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H042",
+    "hospital": "Aster MIMS Hospital",
+    "city": "Kochi",
+    "icu_beds": {
+      "total": 46,
+      "available": 28
+    },
+    "general_beds": {
+      "total": 86,
+      "available": 64
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H043",
+    "hospital": "Wockhardt Hospital",
+    "city": "Nagpur",
+    "icu_beds": {
+      "total": 64,
+      "available": 4
+    },
+    "general_beds": {
+      "total": 132,
+      "available": 57
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H044",
+    "hospital": "Breach Candy Hospital",
+    "city": "Mumbai",
+    "icu_beds": {
+      "total": 47,
+      "available": 27
+    },
+    "general_beds": {
+      "total": 279,
+      "available": 35
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H045",
+    "hospital": "Primus Super Speciality Hospital",
+    "city": "Delhi",
+    "icu_beds": {
+      "total": 28,
+      "available": 16
+    },
+    "general_beds": {
+      "total": 453,
+      "available": 63
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H046",
+    "hospital": "Columbia Asia Hospital",
+    "city": "Bengaluru",
+    "icu_beds": {
+      "total": 30,
+      "available": 11
+    },
+    "general_beds": {
+      "total": 233,
+      "available": 176
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H047",
+    "hospital": "Rajiv Gandhi Govt General Hospital",
+    "city": "Chennai",
+    "icu_beds": {
+      "total": 54,
+      "available": 11
+    },
+    "general_beds": {
+      "total": 137,
+      "available": 8
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H048",
+    "hospital": "Omega Hospital",
+    "city": "Hyderabad",
+    "icu_beds": {
+      "total": 41,
+      "available": 30
+    },
+    "general_beds": {
+      "total": 208,
+      "available": 86
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H049",
+    "hospital": "Surya Mother Child Super Speciality",
+    "city": "Pune",
+    "icu_beds": {
+      "total": 34,
+      "available": 23
+    },
+    "general_beds": {
+      "total": 229,
+      "available": 75
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  },
+  {
+    "hospital_id": "H050",
+    "hospital": "Care Hospital",
+    "city": "Hyderabad",
+    "icu_beds": {
+      "total": 27,
+      "available": 8
+    },
+    "general_beds": {
+      "total": 350,
+      "available": 16
+    },
+    "last_updated": "2026-03-06T08:00:00Z"
+  }
 ]

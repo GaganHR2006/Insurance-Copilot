@@ -30,3 +30,8 @@ Thumbs.db
 
 # FastAPI / Uvicorn
 *.log
+
+# Session data (persisted PDF policy — local only)
+data/session_policy.json
+data/verify_beds.py
+data/audit.py

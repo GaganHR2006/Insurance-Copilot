@@ -1,0 +1,91 @@
+HEALTHGUARD INSURANCE POLICY
+Policy Number: HGP-2024-001
+Insured: John Doe
+Policy Period: 01-Jan-2024 to 31-Dec-2024
+Sum Insured: Rs. 5,00,000
+
+---
+
+SECTION 1: WAITING PERIODS
+
+1.1 Pre-Existing Conditions:
+Any disease, ailment, or condition that was diagnosed or treated within 48 months
+prior to policy commencement is considered a pre-existing condition. All pre-existing
+conditions are subject to a mandatory waiting period of 30 days from the policy start date.
+Claims made within this period will not be entertained.
+
+1.2 Initial Waiting Period:
+A general waiting period of 30 days applies from the date of commencement of this
+policy. No claims except for accidental injuries will be payable during this period.
+
+1.3 Cancer Treatment:
+Coverage for all forms of cancer treatment, including chemotherapy, radiation therapy,
+and surgical oncology, is subject to a 90-day waiting period from the policy inception date.
+
+1.4 Maternity Benefits:
+Maternity coverage including delivery charges, pre/post natal care, and newborn baby
+cover is applicable only after completion of 9 months (270 days) of continuous policy coverage.
+
+---
+
+SECTION 2: ROOM RENT LIMITATIONS
+
+2.1 Daily Room Rent Cap:
+The maximum eligible room rent reimbursable under this policy is capped at Rs. 3,000 per
+day. Any charges exceeding this limit shall be borne by the insured. If the insured opts
+for a room with rent higher than the applicable limit, all associated charges (ICU charges,
+surgeon fees, nursing charges) shall be proportionately reduced as per the ratio of
+eligible room rent to actual room rent chosen.
+
+---
+
+SECTION 3: EXCLUSIONS
+
+The following treatments and conditions are explicitly excluded from coverage under this policy:
+
+3.1 LASIK Eye Surgery:
+Refractive error correction procedures including LASIK, LASEK, PRK, and similar laser
+eye surgeries are not covered under this policy, even if medically recommended.
+
+3.2 Dental Treatment:
+All dental treatments, procedures, orthodontic work, and dental implants are excluded.
+Dental injuries resulting from accidents may be covered — refer to the accidental injury
+rider for details.
+
+3.3 Cosmetic and Plastic Surgery:
+Any cosmetic, aesthetic, or plastic surgery undertaken for beautification purposes,
+unless necessitated by an accident or disease as certified by a registered physician.
+
+3.4 Infertility Treatments:
+IVF, IUI, and other assisted reproductive technologies are not covered.
+
+---
+
+SECTION 4: NETWORK HOSPITALS
+
+The following hospitals form part of the approved cashless network:
+- Apollo Hospitals (all branches)
+- Fortis Healthcare (all branches)
+- AIIMS (All India Institute of Medical Sciences)
+
+Cashless treatment is available only at network hospitals. For non-network hospitals,
+the insured must pay upfront and submit reimbursement claims within 30 days of discharge.
+
+---
+
+SECTION 5: SUB-LIMITS
+
+5.1 Cataract Surgery: Maximum Rs. 25,000 per eye per policy year.
+5.2 Ambulance Charges: Limited to Rs. 2,000 per hospitalisation.
+5.3 ICU Charges: Capped at 2x the applicable room rent limit per day.
+
+---
+
+SECTION 6: CO-PAYMENT
+
+A co-payment of 10% applies to all claims made at non-network hospitals.
+No co-payment is applicable for cashless claims at network hospitals.
+
+---
+
+For queries, contact: support@healthguard.in | 1800-XXX-XXXX

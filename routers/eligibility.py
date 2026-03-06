@@ -1,115 +1,67 @@
 """
-Eligibility Router - Checks insurance claim eligibility for a given treatment and policy.
+Eligibility Router — delegates to eligibility_engine which uses
+PDF policy as primary source.
 """
 
-from typing import Optional
-
 from fastapi import APIRouter
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
-from services.data_loader import load_policies, load_treatments
+from services.eligibility_engine import check_eligibility
+from services.data_loader import get_pdf_policy, load_policies
 
 router = APIRouter()
 
 
 class EligibilityRequest(BaseModel):
-    treatment: str
-    policy: str
-    age: int
-    waiting_period_served_days: int
+    treatment:                str = Field(..., min_length=1)
+    policy:                   str = ""
+    age:                      int = Field(..., ge=1, le=120)
+    waiting_period_served_days: int = Field(..., ge=0)
 
 
-class EligibilityChecks(BaseModel):
-    treatment_covered: bool
-    waiting_period_met: bool
-    age_eligible: bool
-    not_excluded: bool
-
-
-class EligibilityResponse(BaseModel):
-    eligible: bool
-    checks: EligibilityChecks
-    reason: str
-    estimated_coverage_inr: Optional[int] = None
-
-
-@router.post("", response_model=EligibilityResponse)
-def check_eligibility(request: EligibilityRequest):
+@router.post("")
+async def check_eligibility_route(request: EligibilityRequest):
     """
-    Check whether a treatment is eligible for coverage under a given policy,
-    factoring in age, waiting period served, and exclusions.
-
-    Returns eligibility status, individual check results, a human-readable reason,
-    and estimated coverage amount if eligible.
+    Check treatment eligibility.
+    Uses uploaded PDF as primary source; falls back to policies.json.
     """
+    return check_eligibility(
+        treatment=request.treatment,
+        policy=request.policy,
+        age=request.age,
+        waiting_period_served_days=request.waiting_period_served_days,
+    )
+
+
+@router.get("/policy-options")
+async def get_policy_options():
+    """
+    Returns the policy to pre-select in the dropdown.
+    If a PDF has been uploaded, returns that policy's details.
+    Otherwise returns all policies from the dataset.
+    """
+    pdf      = get_pdf_policy()
     policies = load_policies()
-    treatments = load_treatments()
 
-    treatment_lower = request.treatment.lower()
-    policy_lower = request.policy.lower()
+    policy_list = [
+        p.get("name") or p.get("policy_name") or ""
+        for p in policies
+        if p.get("name") or p.get("policy_name")
+    ]
 
-    matched_policy = next(
-        (
-            p for p in policies
-            if policy_lower in p["name"].lower() or policy_lower in p["provider"].lower()
-        ),
-        None,
-    )
-    matched_treatment = next(
-        (t for t in treatments if treatment_lower in t["name"].lower()), None
-    )
-
-    # Default checks
-    treatment_covered = False
-    waiting_period_met = False
-    age_eligible = 18 <= request.age <= 65
-    not_excluded = True
-
-    if matched_policy:
-        covered = [c.lower() for c in matched_policy.get("covered_treatments", [])]
-        treatment_covered = any(treatment_lower in c for c in covered)
-
-        waiting_period_met = (
-            request.waiting_period_served_days >= matched_policy.get("waiting_period_days", 0)
-        )
-
-        exclusions = [e.lower() for e in matched_policy.get("exclusions", [])]
-        not_excluded = not any(treatment_lower in excl for excl in exclusions)
-
-    eligible = treatment_covered and waiting_period_met and age_eligible and not_excluded
-
-    # Build human-readable reason
-    reasons = []
-    if not treatment_covered:
-        policy_name = matched_policy["name"] if matched_policy else request.policy
-        reasons.append(f"'{request.treatment}' is not covered under {policy_name}")
-    if not waiting_period_met:
-        wp = matched_policy.get("waiting_period_days", "N/A") if matched_policy else "N/A"
-        reasons.append(
-            f"Waiting period not met (required: {wp} days, served: {request.waiting_period_served_days} days)"
-        )
-    if not age_eligible:
-        reasons.append(f"Age {request.age} is outside eligible range (18–65)")
-    if not not_excluded:
-        reasons.append(f"'{request.treatment}' is explicitly excluded by this policy")
-
-    if eligible:
-        reason = "All eligibility checks passed. Claim is likely to be approved."
-    else:
-        reason = "; ".join(reasons) + "."
-
-    estimated_coverage_inr = None
-    if eligible and matched_treatment:
-        estimated_coverage_inr = int(matched_treatment["avg_cost_inr"] * 0.85)
-
-    return EligibilityResponse(
-        eligible=eligible,
-        checks=EligibilityChecks(
-            treatment_covered=treatment_covered,
-            waiting_period_met=waiting_period_met,
-            age_eligible=age_eligible,
-            not_excluded=not_excluded,
-        ),
-        reason=reason,
-        estimated_coverage_inr=estimated_coverage_inr,
-    )
+    return {
+        "pdf_policy": {
+            "detected":           bool(
+                pdf.get("insurer") or
+                pdf.get("covered_treatments") or
+                pdf.get("sum_insured") or
+                pdf.get("waiting_period_days")
+            ),
+            "insurer":            pdf.get("insurer"),
+            "policy_name":        pdf.get("policy_name"),
+            "covered_treatments": pdf.get("covered_treatments", []),
+            "waiting_period_days": pdf.get("waiting_period_days"),
+            "sum_insured":        pdf.get("sum_insured"),
+        },
+        "available_policies": policy_list,
+    }

@@ -1,14 +1,16 @@
 """
 Chat Router - Handles AI-powered Q&A for insurance queries.
+Returns a structured response with both raw answer and a parsed bullet list.
 """
 
 from datetime import datetime
-from typing import Optional
+from typing import List, Optional
+import os
 
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from services.ai_engine import ask_ai, AI_MODEL
+from services.ai_engine import ask_ai
 
 router = APIRouter()
 
@@ -20,6 +22,7 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     answer: str
+    bullets: List[str]
     model: str
     timestamp: str
 
@@ -27,12 +30,20 @@ class ChatResponse(BaseModel):
 @router.post("", response_model=ChatResponse)
 async def chat(request: ChatRequest):
     """
-    Ask an insurance-related question. Optionally provide policy context
-    to get more tailored answers from the AI advisor.
+    AI insurance assistant. Returns precise bullet-point answers only.
+    Answers are formatted with <b> HTML tags for the critical bullet.
     """
-    answer = await ask_ai(request.question, context=request.policy_context or "")
+    raw_answer = await ask_ai(request.question, context=request.policy_context or "")
+
+    # Split bullets into a list for frontend rendering
+    bullet_list = [
+        line.strip() for line in raw_answer.split("\n")
+        if line.strip().startswith(("•", "<b>•"))
+    ]
+
     return ChatResponse(
-        answer=answer,
-        model=AI_MODEL,
+        answer=raw_answer,
+        bullets=bullet_list,
+        model=os.getenv("AI_MODEL", "llama-3.3-70b-versatile"),
         timestamp=datetime.utcnow().isoformat() + "Z",
     )
