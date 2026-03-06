@@ -1,1752 +1,238 @@
-[
-    {
-        "hospital_id": "H001",
-        "hospital": "Apollo Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 8.2,
-        "avg_approval_time_hrs": 4.5
-    },
-    {
-        "hospital_id": "H001",
-        "hospital": "Apollo Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 11.7,
-        "avg_approval_time_hrs": 6.2
-    },
-    {
-        "hospital_id": "H001",
-        "hospital": "Apollo Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 6.3,
-        "avg_approval_time_hrs": 3.1
-    },
-    {
-        "hospital_id": "H001",
-        "hospital": "Apollo Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 14.5,
-        "avg_approval_time_hrs": 9.8
-    },
-    {
-        "hospital_id": "H001",
-        "hospital": "Apollo Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 19.1,
-        "avg_approval_time_hrs": 14.3
-    },
-    {
-        "hospital_id": "H002",
-        "hospital": "Fortis Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 7.4,
-        "avg_approval_time_hrs": 5.1
-    },
-    {
-        "hospital_id": "H002",
-        "hospital": "Fortis Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 22.6,
-        "avg_approval_time_hrs": 18.5
-    },
-    {
-        "hospital_id": "H002",
-        "hospital": "Fortis Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 9.8,
-        "avg_approval_time_hrs": 7.4
-    },
-    {
-        "hospital_id": "H002",
-        "hospital": "Fortis Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 5.3,
-        "avg_approval_time_hrs": 2.8
-    },
-    {
-        "hospital_id": "H002",
-        "hospital": "Fortis Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 16.4,
-        "avg_approval_time_hrs": 12.1
-    },
-    {
-        "hospital_id": "H003",
-        "hospital": "Manipal Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 12.9,
-        "avg_approval_time_hrs": 8.7
-    },
-    {
-        "hospital_id": "H003",
-        "hospital": "Manipal Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 7.1,
-        "avg_approval_time_hrs": 4.2
-    },
-    {
-        "hospital_id": "H003",
-        "hospital": "Manipal Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 18.3,
-        "avg_approval_time_hrs": 15.6
-    },
-    {
-        "hospital_id": "H003",
-        "hospital": "Manipal Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 9.6,
-        "avg_approval_time_hrs": 6.9
-    },
-    {
-        "hospital_id": "H003",
-        "hospital": "Manipal Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 25.4,
-        "avg_approval_time_hrs": 22.1
-    },
-    {
-        "hospital_id": "H004",
-        "hospital": "MIOT International",
-        "insurer": "StarHealth",
-        "rejection_rate": 4.7,
-        "avg_approval_time_hrs": 2.5
-    },
-    {
-        "hospital_id": "H004",
-        "hospital": "MIOT International",
-        "insurer": "NivaBupa",
-        "rejection_rate": 17.3,
-        "avg_approval_time_hrs": 13.4
-    },
-    {
-        "hospital_id": "H004",
-        "hospital": "MIOT International",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 28.6,
-        "avg_approval_time_hrs": 31.2
-    },
-    {
-        "hospital_id": "H004",
-        "hospital": "MIOT International",
-        "insurer": "ICICILombard",
-        "rejection_rate": 11.2,
-        "avg_approval_time_hrs": 9.5
-    },
-    {
-        "hospital_id": "H004",
-        "hospital": "MIOT International",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 6.9,
-        "avg_approval_time_hrs": 3.8
-    },
-    {
-        "hospital_id": "H005",
-        "hospital": "KIMS Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 21.5,
-        "avg_approval_time_hrs": 19.7
-    },
-    {
-        "hospital_id": "H005",
-        "hospital": "KIMS Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 8.4,
-        "avg_approval_time_hrs": 5.3
-    },
-    {
-        "hospital_id": "H005",
-        "hospital": "KIMS Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 13.7,
-        "avg_approval_time_hrs": 11.2
-    },
-    {
-        "hospital_id": "H005",
-        "hospital": "KIMS Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 5.9,
-        "avg_approval_time_hrs": 3.4
-    },
-    {
-        "hospital_id": "H005",
-        "hospital": "KIMS Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 32.1,
-        "avg_approval_time_hrs": 45.6
-    },
-    {
-        "hospital_id": "H006",
-        "hospital": "Medanta The Medicity",
-        "insurer": "StarHealth",
-        "rejection_rate": 6.8,
-        "avg_approval_time_hrs": 4.1
-    },
-    {
-        "hospital_id": "H006",
-        "hospital": "Medanta The Medicity",
-        "insurer": "NivaBupa",
-        "rejection_rate": 10.4,
-        "avg_approval_time_hrs": 7.8
-    },
-    {
-        "hospital_id": "H006",
-        "hospital": "Medanta The Medicity",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 24.7,
-        "avg_approval_time_hrs": 28.3
-    },
-    {
-        "hospital_id": "H006",
-        "hospital": "Medanta The Medicity",
-        "insurer": "ICICILombard",
-        "rejection_rate": 3.2,
-        "avg_approval_time_hrs": 1.8
-    },
-    {
-        "hospital_id": "H006",
-        "hospital": "Medanta The Medicity",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 15.6,
-        "avg_approval_time_hrs": 13.9
-    },
-    {
-        "hospital_id": "H007",
-        "hospital": "Ruby Hall Clinic",
-        "insurer": "StarHealth",
-        "rejection_rate": 9.3,
-        "avg_approval_time_hrs": 6.7
-    },
-    {
-        "hospital_id": "H007",
-        "hospital": "Ruby Hall Clinic",
-        "insurer": "NivaBupa",
-        "rejection_rate": 16.8,
-        "avg_approval_time_hrs": 14.2
-    },
-    {
-        "hospital_id": "H007",
-        "hospital": "Ruby Hall Clinic",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 4.5,
-        "avg_approval_time_hrs": 2.3
-    },
-    {
-        "hospital_id": "H007",
-        "hospital": "Ruby Hall Clinic",
-        "insurer": "ICICILombard",
-        "rejection_rate": 27.3,
-        "avg_approval_time_hrs": 35.1
-    },
-    {
-        "hospital_id": "H007",
-        "hospital": "Ruby Hall Clinic",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 11.6,
-        "avg_approval_time_hrs": 9.2
-    },
-    {
-        "hospital_id": "H008",
-        "hospital": "Sterling Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 18.7,
-        "avg_approval_time_hrs": 16.4
-    },
-    {
-        "hospital_id": "H008",
-        "hospital": "Sterling Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 5.6,
-        "avg_approval_time_hrs": 3.2
-    },
-    {
-        "hospital_id": "H008",
-        "hospital": "Sterling Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 12.4,
-        "avg_approval_time_hrs": 10.1
-    },
-    {
-        "hospital_id": "H008",
-        "hospital": "Sterling Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 7.8,
-        "avg_approval_time_hrs": 5.7
-    },
-    {
-        "hospital_id": "H008",
-        "hospital": "Sterling Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 29.4,
-        "avg_approval_time_hrs": 40.8
-    },
-    {
-        "hospital_id": "H009",
-        "hospital": "SMS Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 4.1,
-        "avg_approval_time_hrs": 2.1
-    },
-    {
-        "hospital_id": "H009",
-        "hospital": "SMS Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 20.3,
-        "avg_approval_time_hrs": 18.6
-    },
-    {
-        "hospital_id": "H009",
-        "hospital": "SMS Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 33.7,
-        "avg_approval_time_hrs": 58.4
-    },
-    {
-        "hospital_id": "H009",
-        "hospital": "SMS Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 13.1,
-        "avg_approval_time_hrs": 11.4
-    },
-    {
-        "hospital_id": "H009",
-        "hospital": "SMS Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 8.5,
-        "avg_approval_time_hrs": 6.3
-    },
-    {
-        "hospital_id": "H010",
-        "hospital": "Sanjay Gandhi PGI",
-        "insurer": "StarHealth",
-        "rejection_rate": 15.4,
-        "avg_approval_time_hrs": 13.7
-    },
-    {
-        "hospital_id": "H010",
-        "hospital": "Sanjay Gandhi PGI",
-        "insurer": "NivaBupa",
-        "rejection_rate": 23.8,
-        "avg_approval_time_hrs": 25.2
-    },
-    {
-        "hospital_id": "H010",
-        "hospital": "Sanjay Gandhi PGI",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 7.6,
-        "avg_approval_time_hrs": 5.4
-    },
-    {
-        "hospital_id": "H010",
-        "hospital": "Sanjay Gandhi PGI",
-        "insurer": "ICICILombard",
-        "rejection_rate": 10.9,
-        "avg_approval_time_hrs": 8.8
-    },
-    {
-        "hospital_id": "H010",
-        "hospital": "Sanjay Gandhi PGI",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 3.8,
-        "avg_approval_time_hrs": 1.9
-    },
-    {
-        "hospital_id": "H011",
-        "hospital": "PGI Chandigarh",
-        "insurer": "StarHealth",
-        "rejection_rate": 12.1,
-        "avg_approval_time_hrs": 9.6
-    },
-    {
-        "hospital_id": "H011",
-        "hospital": "PGI Chandigarh",
-        "insurer": "NivaBupa",
-        "rejection_rate": 6.4,
-        "avg_approval_time_hrs": 4.1
-    },
-    {
-        "hospital_id": "H011",
-        "hospital": "PGI Chandigarh",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 26.9,
-        "avg_approval_time_hrs": 34.7
-    },
-    {
-        "hospital_id": "H011",
-        "hospital": "PGI Chandigarh",
-        "insurer": "ICICILombard",
-        "rejection_rate": 9.2,
-        "avg_approval_time_hrs": 7.1
-    },
-    {
-        "hospital_id": "H011",
-        "hospital": "PGI Chandigarh",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 18.5,
-        "avg_approval_time_hrs": 16.8
-    },
-    {
-        "hospital_id": "H012",
-        "hospital": "Hamidia Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 31.4,
-        "avg_approval_time_hrs": 52.3
-    },
-    {
-        "hospital_id": "H012",
-        "hospital": "Hamidia Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 14.7,
-        "avg_approval_time_hrs": 12.4
-    },
-    {
-        "hospital_id": "H012",
-        "hospital": "Hamidia Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 8.3,
-        "avg_approval_time_hrs": 6.1
-    },
-    {
-        "hospital_id": "H012",
-        "hospital": "Hamidia Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 20.6,
-        "avg_approval_time_hrs": 21.5
-    },
-    {
-        "hospital_id": "H012",
-        "hospital": "Hamidia Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 5.2,
-        "avg_approval_time_hrs": 2.9
-    },
-    {
-        "hospital_id": "H013",
-        "hospital": "New Civil Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 7.9,
-        "avg_approval_time_hrs": 5.2
-    },
-    {
-        "hospital_id": "H013",
-        "hospital": "New Civil Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 13.2,
-        "avg_approval_time_hrs": 10.9
-    },
-    {
-        "hospital_id": "H013",
-        "hospital": "New Civil Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 22.5,
-        "avg_approval_time_hrs": 24.6
-    },
-    {
-        "hospital_id": "H013",
-        "hospital": "New Civil Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 35.0,
-        "avg_approval_time_hrs": 68.2
-    },
-    {
-        "hospital_id": "H013",
-        "hospital": "New Civil Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 10.3,
-        "avg_approval_time_hrs": 8.5
-    },
-    {
-        "hospital_id": "H014",
-        "hospital": "Amrita Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 6.1,
-        "avg_approval_time_hrs": 3.9
-    },
-    {
-        "hospital_id": "H014",
-        "hospital": "Amrita Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 11.8,
-        "avg_approval_time_hrs": 9.4
-    },
-    {
-        "hospital_id": "H014",
-        "hospital": "Amrita Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 4.2,
-        "avg_approval_time_hrs": 2.2
-    },
-    {
-        "hospital_id": "H014",
-        "hospital": "Amrita Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 16.7,
-        "avg_approval_time_hrs": 14.6
-    },
-    {
-        "hospital_id": "H014",
-        "hospital": "Amrita Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 28.3,
-        "avg_approval_time_hrs": 38.9
-    },
-    {
-        "hospital_id": "H015",
-        "hospital": "AIIMS Nagpur",
-        "insurer": "StarHealth",
-        "rejection_rate": 10.6,
-        "avg_approval_time_hrs": 8.2
-    },
-    {
-        "hospital_id": "H015",
-        "hospital": "AIIMS Nagpur",
-        "insurer": "NivaBupa",
-        "rejection_rate": 19.4,
-        "avg_approval_time_hrs": 17.3
-    },
-    {
-        "hospital_id": "H015",
-        "hospital": "AIIMS Nagpur",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 30.7,
-        "avg_approval_time_hrs": 48.5
-    },
-    {
-        "hospital_id": "H015",
-        "hospital": "AIIMS Nagpur",
-        "insurer": "ICICILombard",
-        "rejection_rate": 6.7,
-        "avg_approval_time_hrs": 4.5
-    },
-    {
-        "hospital_id": "H015",
-        "hospital": "AIIMS Nagpur",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 14.2,
-        "avg_approval_time_hrs": 11.7
-    },
-    {
-        "hospital_id": "H016",
-        "hospital": "Kokilaben Dhirubhai Ambani Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 5.4,
-        "avg_approval_time_hrs": 3.3
-    },
-    {
-        "hospital_id": "H016",
-        "hospital": "Kokilaben Dhirubhai Ambani Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 8.9,
-        "avg_approval_time_hrs": 6.4
-    },
-    {
-        "hospital_id": "H016",
-        "hospital": "Kokilaben Dhirubhai Ambani Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 3.1,
-        "avg_approval_time_hrs": 1.7
-    },
-    {
-        "hospital_id": "H016",
-        "hospital": "Kokilaben Dhirubhai Ambani Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 12.5,
-        "avg_approval_time_hrs": 10.3
-    },
-    {
-        "hospital_id": "H016",
-        "hospital": "Kokilaben Dhirubhai Ambani Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 21.8,
-        "avg_approval_time_hrs": 20.6
-    },
-    {
-        "hospital_id": "H017",
-        "hospital": "Sir Ganga Ram Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 14.3,
-        "avg_approval_time_hrs": 12.1
-    },
-    {
-        "hospital_id": "H017",
-        "hospital": "Sir Ganga Ram Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 25.6,
-        "avg_approval_time_hrs": 31.8
-    },
-    {
-        "hospital_id": "H017",
-        "hospital": "Sir Ganga Ram Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 9.7,
-        "avg_approval_time_hrs": 7.6
-    },
-    {
-        "hospital_id": "H017",
-        "hospital": "Sir Ganga Ram Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 18.1,
-        "avg_approval_time_hrs": 16.4
-    },
-    {
-        "hospital_id": "H017",
-        "hospital": "Sir Ganga Ram Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 4.4,
-        "avg_approval_time_hrs": 2.4
-    },
-    {
-        "hospital_id": "H018",
-        "hospital": "Sakra World Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 11.3,
-        "avg_approval_time_hrs": 9.1
-    },
-    {
-        "hospital_id": "H018",
-        "hospital": "Sakra World Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 5.7,
-        "avg_approval_time_hrs": 3.6
-    },
-    {
-        "hospital_id": "H018",
-        "hospital": "Sakra World Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 22.9,
-        "avg_approval_time_hrs": 26.7
-    },
-    {
-        "hospital_id": "H018",
-        "hospital": "Sakra World Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 8.6,
-        "avg_approval_time_hrs": 6.8
-    },
-    {
-        "hospital_id": "H018",
-        "hospital": "Sakra World Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 17.4,
-        "avg_approval_time_hrs": 15.3
-    },
-    {
-        "hospital_id": "H019",
-        "hospital": "Gleneagles Global Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 27.2,
-        "avg_approval_time_hrs": 37.4
-    },
-    {
-        "hospital_id": "H019",
-        "hospital": "Gleneagles Global Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 9.1,
-        "avg_approval_time_hrs": 7.2
-    },
-    {
-        "hospital_id": "H019",
-        "hospital": "Gleneagles Global Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 6.5,
-        "avg_approval_time_hrs": 4.3
-    },
-    {
-        "hospital_id": "H019",
-        "hospital": "Gleneagles Global Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 13.8,
-        "avg_approval_time_hrs": 11.6
-    },
-    {
-        "hospital_id": "H019",
-        "hospital": "Gleneagles Global Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 3.4,
-        "avg_approval_time_hrs": 1.6
-    },
-    {
-        "hospital_id": "H020",
-        "hospital": "Yashoda Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 16.6,
-        "avg_approval_time_hrs": 14.8
-    },
-    {
-        "hospital_id": "H020",
-        "hospital": "Yashoda Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 7.3,
-        "avg_approval_time_hrs": 5.1
-    },
-    {
-        "hospital_id": "H020",
-        "hospital": "Yashoda Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 21.4,
-        "avg_approval_time_hrs": 23.3
-    },
-    {
-        "hospital_id": "H020",
-        "hospital": "Yashoda Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 11.7,
-        "avg_approval_time_hrs": 9.3
-    },
-    {
-        "hospital_id": "H020",
-        "hospital": "Yashoda Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 29.8,
-        "avg_approval_time_hrs": 44.1
-    },
-    {
-        "hospital_id": "H021",
-        "hospital": "Deenanath Mangeshkar Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 8.7,
-        "avg_approval_time_hrs": 6.5
-    },
-    {
-        "hospital_id": "H021",
-        "hospital": "Deenanath Mangeshkar Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 24.1,
-        "avg_approval_time_hrs": 28.9
-    },
-    {
-        "hospital_id": "H021",
-        "hospital": "Deenanath Mangeshkar Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 15.3,
-        "avg_approval_time_hrs": 13.2
-    },
-    {
-        "hospital_id": "H021",
-        "hospital": "Deenanath Mangeshkar Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 4.9,
-        "avg_approval_time_hrs": 2.7
-    },
-    {
-        "hospital_id": "H021",
-        "hospital": "Deenanath Mangeshkar Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 10.8,
-        "avg_approval_time_hrs": 8.9
-    },
-    {
-        "hospital_id": "H022",
-        "hospital": "Apollo Hospitals",
-        "insurer": "StarHealth",
-        "rejection_rate": 6.2,
-        "avg_approval_time_hrs": 4.0
-    },
-    {
-        "hospital_id": "H022",
-        "hospital": "Apollo Hospitals",
-        "insurer": "NivaBupa",
-        "rejection_rate": 12.6,
-        "avg_approval_time_hrs": 10.4
-    },
-    {
-        "hospital_id": "H022",
-        "hospital": "Apollo Hospitals",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 32.3,
-        "avg_approval_time_hrs": 55.7
-    },
-    {
-        "hospital_id": "H022",
-        "hospital": "Apollo Hospitals",
-        "insurer": "ICICILombard",
-        "rejection_rate": 8.1,
-        "avg_approval_time_hrs": 5.9
-    },
-    {
-        "hospital_id": "H022",
-        "hospital": "Apollo Hospitals",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 19.7,
-        "avg_approval_time_hrs": 18.1
-    },
-    {
-        "hospital_id": "H023",
-        "hospital": "Santokba Durlabhji Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 24.5,
-        "avg_approval_time_hrs": 30.6
-    },
-    {
-        "hospital_id": "H023",
-        "hospital": "Santokba Durlabhji Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 11.4,
-        "avg_approval_time_hrs": 9.3
-    },
-    {
-        "hospital_id": "H023",
-        "hospital": "Santokba Durlabhji Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 7.2,
-        "avg_approval_time_hrs": 5.0
-    },
-    {
-        "hospital_id": "H023",
-        "hospital": "Santokba Durlabhji Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 17.8,
-        "avg_approval_time_hrs": 15.5
-    },
-    {
-        "hospital_id": "H023",
-        "hospital": "Santokba Durlabhji Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 4.3,
-        "avg_approval_time_hrs": 2.2
-    },
-    {
-        "hospital_id": "H024",
-        "hospital": "Era Medical College Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 13.5,
-        "avg_approval_time_hrs": 11.3
-    },
-    {
-        "hospital_id": "H024",
-        "hospital": "Era Medical College Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 5.8,
-        "avg_approval_time_hrs": 3.5
-    },
-    {
-        "hospital_id": "H024",
-        "hospital": "Era Medical College Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 20.1,
-        "avg_approval_time_hrs": 21.7
-    },
-    {
-        "hospital_id": "H024",
-        "hospital": "Era Medical College Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 9.4,
-        "avg_approval_time_hrs": 7.3
-    },
-    {
-        "hospital_id": "H024",
-        "hospital": "Era Medical College Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 30.2,
-        "avg_approval_time_hrs": 47.6
-    },
-    {
-        "hospital_id": "H025",
-        "hospital": "Max Super Speciality Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 7.5,
-        "avg_approval_time_hrs": 5.3
-    },
-    {
-        "hospital_id": "H025",
-        "hospital": "Max Super Speciality Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 15.9,
-        "avg_approval_time_hrs": 13.8
-    },
-    {
-        "hospital_id": "H025",
-        "hospital": "Max Super Speciality Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 4.8,
-        "avg_approval_time_hrs": 2.6
-    },
-    {
-        "hospital_id": "H025",
-        "hospital": "Max Super Speciality Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 22.4,
-        "avg_approval_time_hrs": 24.1
-    },
-    {
-        "hospital_id": "H025",
-        "hospital": "Max Super Speciality Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 10.7,
-        "avg_approval_time_hrs": 8.6
-    },
-    {
-        "hospital_id": "H026",
-        "hospital": "Bansal Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 18.2,
-        "avg_approval_time_hrs": 16.7
-    },
-    {
-        "hospital_id": "H026",
-        "hospital": "Bansal Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 28.9,
-        "avg_approval_time_hrs": 41.5
-    },
-    {
-        "hospital_id": "H026",
-        "hospital": "Bansal Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 11.6,
-        "avg_approval_time_hrs": 9.4
-    },
-    {
-        "hospital_id": "H026",
-        "hospital": "Bansal Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 6.3,
-        "avg_approval_time_hrs": 4.2
-    },
-    {
-        "hospital_id": "H026",
-        "hospital": "Bansal Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 14.8,
-        "avg_approval_time_hrs": 12.5
-    },
-    {
-        "hospital_id": "H027",
-        "hospital": "Kirtikar Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 23.6,
-        "avg_approval_time_hrs": 27.8
-    },
-    {
-        "hospital_id": "H027",
-        "hospital": "Kirtikar Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 8.8,
-        "avg_approval_time_hrs": 6.6
-    },
-    {
-        "hospital_id": "H027",
-        "hospital": "Kirtikar Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 5.1,
-        "avg_approval_time_hrs": 3.0
-    },
-    {
-        "hospital_id": "H027",
-        "hospital": "Kirtikar Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 16.5,
-        "avg_approval_time_hrs": 14.3
-    },
-    {
-        "hospital_id": "H027",
-        "hospital": "Kirtikar Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 31.8,
-        "avg_approval_time_hrs": 51.9
-    },
-    {
-        "hospital_id": "H028",
-        "hospital": "Lakeshore Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 9.9,
-        "avg_approval_time_hrs": 7.8
-    },
-    {
-        "hospital_id": "H028",
-        "hospital": "Lakeshore Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 14.4,
-        "avg_approval_time_hrs": 12.2
-    },
-    {
-        "hospital_id": "H028",
-        "hospital": "Lakeshore Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 26.1,
-        "avg_approval_time_hrs": 33.4
-    },
-    {
-        "hospital_id": "H028",
-        "hospital": "Lakeshore Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 7.7,
-        "avg_approval_time_hrs": 5.6
-    },
-    {
-        "hospital_id": "H028",
-        "hospital": "Lakeshore Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 4.6,
-        "avg_approval_time_hrs": 2.5
-    },
-    {
-        "hospital_id": "H029",
-        "hospital": "Alexis Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 17.8,
-        "avg_approval_time_hrs": 15.6
-    },
-    {
-        "hospital_id": "H029",
-        "hospital": "Alexis Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 6.7,
-        "avg_approval_time_hrs": 4.4
-    },
-    {
-        "hospital_id": "H029",
-        "hospital": "Alexis Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 12.3,
-        "avg_approval_time_hrs": 10.2
-    },
-    {
-        "hospital_id": "H029",
-        "hospital": "Alexis Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 29.7,
-        "avg_approval_time_hrs": 43.2
-    },
-    {
-        "hospital_id": "H029",
-        "hospital": "Alexis Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 8.2,
-        "avg_approval_time_hrs": 6.1
-    },
-    {
-        "hospital_id": "H030",
-        "hospital": "Nanavati Max Super Speciality",
-        "insurer": "StarHealth",
-        "rejection_rate": 10.5,
-        "avg_approval_time_hrs": 8.4
-    },
-    {
-        "hospital_id": "H030",
-        "hospital": "Nanavati Max Super Speciality",
-        "insurer": "NivaBupa",
-        "rejection_rate": 4.9,
-        "avg_approval_time_hrs": 2.8
-    },
-    {
-        "hospital_id": "H030",
-        "hospital": "Nanavati Max Super Speciality",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 19.6,
-        "avg_approval_time_hrs": 17.9
-    },
-    {
-        "hospital_id": "H030",
-        "hospital": "Nanavati Max Super Speciality",
-        "insurer": "ICICILombard",
-        "rejection_rate": 13.4,
-        "avg_approval_time_hrs": 11.1
-    },
-    {
-        "hospital_id": "H030",
-        "hospital": "Nanavati Max Super Speciality",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 25.7,
-        "avg_approval_time_hrs": 32.3
-    },
-    {
-        "hospital_id": "H031",
-        "hospital": "BLK Super Speciality Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 5.3,
-        "avg_approval_time_hrs": 3.2
-    },
-    {
-        "hospital_id": "H031",
-        "hospital": "BLK Super Speciality Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 18.6,
-        "avg_approval_time_hrs": 16.9
-    },
-    {
-        "hospital_id": "H031",
-        "hospital": "BLK Super Speciality Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 10.1,
-        "avg_approval_time_hrs": 8.1
-    },
-    {
-        "hospital_id": "H031",
-        "hospital": "BLK Super Speciality Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 7.4,
-        "avg_approval_time_hrs": 5.5
-    },
-    {
-        "hospital_id": "H031",
-        "hospital": "BLK Super Speciality Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 22.3,
-        "avg_approval_time_hrs": 23.7
-    },
-    {
-        "hospital_id": "H032",
-        "hospital": "BGS Gleneagles Global Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 15.7,
-        "avg_approval_time_hrs": 13.5
-    },
-    {
-        "hospital_id": "H032",
-        "hospital": "BGS Gleneagles Global Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 27.4,
-        "avg_approval_time_hrs": 36.8
-    },
-    {
-        "hospital_id": "H032",
-        "hospital": "BGS Gleneagles Global Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 8.5,
-        "avg_approval_time_hrs": 6.4
-    },
-    {
-        "hospital_id": "H032",
-        "hospital": "BGS Gleneagles Global Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 3.5,
-        "avg_approval_time_hrs": 1.8
-    },
-    {
-        "hospital_id": "H032",
-        "hospital": "BGS Gleneagles Global Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 12.9,
-        "avg_approval_time_hrs": 10.8
-    },
-    {
-        "hospital_id": "H033",
-        "hospital": "Chettinad Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 9.6,
-        "avg_approval_time_hrs": 7.5
-    },
-    {
-        "hospital_id": "H033",
-        "hospital": "Chettinad Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 21.7,
-        "avg_approval_time_hrs": 22.4
-    },
-    {
-        "hospital_id": "H033",
-        "hospital": "Chettinad Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 6.4,
-        "avg_approval_time_hrs": 4.2
-    },
-    {
-        "hospital_id": "H033",
-        "hospital": "Chettinad Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 14.8,
-        "avg_approval_time_hrs": 12.7
-    },
-    {
-        "hospital_id": "H033",
-        "hospital": "Chettinad Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 33.2,
-        "avg_approval_time_hrs": 61.4
-    },
-    {
-        "hospital_id": "H034",
-        "hospital": "Continental Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 11.4,
-        "avg_approval_time_hrs": 9.2
-    },
-    {
-        "hospital_id": "H034",
-        "hospital": "Continental Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 4.7,
-        "avg_approval_time_hrs": 2.6
-    },
-    {
-        "hospital_id": "H034",
-        "hospital": "Continental Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 23.8,
-        "avg_approval_time_hrs": 27.5
-    },
-    {
-        "hospital_id": "H034",
-        "hospital": "Continental Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 8.9,
-        "avg_approval_time_hrs": 6.8
-    },
-    {
-        "hospital_id": "H034",
-        "hospital": "Continental Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 16.2,
-        "avg_approval_time_hrs": 14.1
-    },
-    {
-        "hospital_id": "H035",
-        "hospital": "Symbiosis University Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 20.5,
-        "avg_approval_time_hrs": 20.3
-    },
-    {
-        "hospital_id": "H035",
-        "hospital": "Symbiosis University Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 7.6,
-        "avg_approval_time_hrs": 5.4
-    },
-    {
-        "hospital_id": "H035",
-        "hospital": "Symbiosis University Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 29.1,
-        "avg_approval_time_hrs": 42.7
-    },
-    {
-        "hospital_id": "H035",
-        "hospital": "Symbiosis University Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 12.7,
-        "avg_approval_time_hrs": 10.6
-    },
-    {
-        "hospital_id": "H035",
-        "hospital": "Symbiosis University Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 5.5,
-        "avg_approval_time_hrs": 3.3
-    },
-    {
-        "hospital_id": "H036",
-        "hospital": "HCG Cancer Centre",
-        "insurer": "StarHealth",
-        "rejection_rate": 14.1,
-        "avg_approval_time_hrs": 11.8
-    },
-    {
-        "hospital_id": "H036",
-        "hospital": "HCG Cancer Centre",
-        "insurer": "NivaBupa",
-        "rejection_rate": 26.3,
-        "avg_approval_time_hrs": 34.2
-    },
-    {
-        "hospital_id": "H036",
-        "hospital": "HCG Cancer Centre",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 7.3,
-        "avg_approval_time_hrs": 5.1
-    },
-    {
-        "hospital_id": "H036",
-        "hospital": "HCG Cancer Centre",
-        "insurer": "ICICILombard",
-        "rejection_rate": 4.1,
-        "avg_approval_time_hrs": 2.1
-    },
-    {
-        "hospital_id": "H036",
-        "hospital": "HCG Cancer Centre",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 18.9,
-        "avg_approval_time_hrs": 17.2
-    },
-    {
-        "hospital_id": "H037",
-        "hospital": "Fortis Escorts Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 6.6,
-        "avg_approval_time_hrs": 4.5
-    },
-    {
-        "hospital_id": "H037",
-        "hospital": "Fortis Escorts Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 10.2,
-        "avg_approval_time_hrs": 8.1
-    },
-    {
-        "hospital_id": "H037",
-        "hospital": "Fortis Escorts Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 28.5,
-        "avg_approval_time_hrs": 39.6
-    },
-    {
-        "hospital_id": "H037",
-        "hospital": "Fortis Escorts Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 16.7,
-        "avg_approval_time_hrs": 14.4
-    },
-    {
-        "hospital_id": "H037",
-        "hospital": "Fortis Escorts Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 5.0,
-        "avg_approval_time_hrs": 2.7
-    },
-    {
-        "hospital_id": "H038",
-        "hospital": "Charak Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 22.8,
-        "avg_approval_time_hrs": 25.6
-    },
-    {
-        "hospital_id": "H038",
-        "hospital": "Charak Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 9.5,
-        "avg_approval_time_hrs": 7.4
-    },
-    {
-        "hospital_id": "H038",
-        "hospital": "Charak Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 5.9,
-        "avg_approval_time_hrs": 3.7
-    },
-    {
-        "hospital_id": "H038",
-        "hospital": "Charak Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 13.6,
-        "avg_approval_time_hrs": 11.4
-    },
-    {
-        "hospital_id": "H038",
-        "hospital": "Charak Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 31.3,
-        "avg_approval_time_hrs": 50.1
-    },
-    {
-        "hospital_id": "H039",
-        "hospital": "Ivy Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 8.4,
-        "avg_approval_time_hrs": 6.2
-    },
-    {
-        "hospital_id": "H039",
-        "hospital": "Ivy Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 17.6,
-        "avg_approval_time_hrs": 15.4
-    },
-    {
-        "hospital_id": "H039",
-        "hospital": "Ivy Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 12.8,
-        "avg_approval_time_hrs": 10.7
-    },
-    {
-        "hospital_id": "H039",
-        "hospital": "Ivy Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 25.3,
-        "avg_approval_time_hrs": 30.8
-    },
-    {
-        "hospital_id": "H039",
-        "hospital": "Ivy Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 4.2,
-        "avg_approval_time_hrs": 2.3
-    },
-    {
-        "hospital_id": "H040",
-        "hospital": "Narmada Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 16.3,
-        "avg_approval_time_hrs": 14.6
-    },
-    {
-        "hospital_id": "H040",
-        "hospital": "Narmada Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 6.1,
-        "avg_approval_time_hrs": 3.9
-    },
-    {
-        "hospital_id": "H040",
-        "hospital": "Narmada Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 24.4,
-        "avg_approval_time_hrs": 29.1
-    },
-    {
-        "hospital_id": "H040",
-        "hospital": "Narmada Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 10.3,
-        "avg_approval_time_hrs": 8.2
-    },
-    {
-        "hospital_id": "H040",
-        "hospital": "Narmada Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 19.5,
-        "avg_approval_time_hrs": 18.3
-    },
-    {
-        "hospital_id": "H041",
-        "hospital": "CIMS Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 11.1,
-        "avg_approval_time_hrs": 8.9
-    },
-    {
-        "hospital_id": "H041",
-        "hospital": "CIMS Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 30.4,
-        "avg_approval_time_hrs": 46.2
-    },
-    {
-        "hospital_id": "H041",
-        "hospital": "CIMS Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 6.8,
-        "avg_approval_time_hrs": 4.6
-    },
-    {
-        "hospital_id": "H041",
-        "hospital": "CIMS Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 15.2,
-        "avg_approval_time_hrs": 13.1
-    },
-    {
-        "hospital_id": "H041",
-        "hospital": "CIMS Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 8.6,
-        "avg_approval_time_hrs": 6.6
-    },
-    {
-        "hospital_id": "H042",
-        "hospital": "Aster MIMS Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 21.2,
-        "avg_approval_time_hrs": 22.8
-    },
-    {
-        "hospital_id": "H042",
-        "hospital": "Aster MIMS Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 7.8,
-        "avg_approval_time_hrs": 5.7
-    },
-    {
-        "hospital_id": "H042",
-        "hospital": "Aster MIMS Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 14.6,
-        "avg_approval_time_hrs": 12.4
-    },
-    {
-        "hospital_id": "H042",
-        "hospital": "Aster MIMS Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 3.7,
-        "avg_approval_time_hrs": 2.0
-    },
-    {
-        "hospital_id": "H042",
-        "hospital": "Aster MIMS Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 27.9,
-        "avg_approval_time_hrs": 37.6
-    },
-    {
-        "hospital_id": "H043",
-        "hospital": "Wockhardt Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 9.2,
-        "avg_approval_time_hrs": 7.1
-    },
-    {
-        "hospital_id": "H043",
-        "hospital": "Wockhardt Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 16.1,
-        "avg_approval_time_hrs": 14.0
-    },
-    {
-        "hospital_id": "H043",
-        "hospital": "Wockhardt Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 34.6,
-        "avg_approval_time_hrs": 65.3
-    },
-    {
-        "hospital_id": "H043",
-        "hospital": "Wockhardt Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 11.9,
-        "avg_approval_time_hrs": 9.7
-    },
-    {
-        "hospital_id": "H043",
-        "hospital": "Wockhardt Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 5.7,
-        "avg_approval_time_hrs": 3.4
-    },
-    {
-        "hospital_id": "H044",
-        "hospital": "Breach Candy Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 13.8,
-        "avg_approval_time_hrs": 11.7
-    },
-    {
-        "hospital_id": "H044",
-        "hospital": "Breach Candy Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 4.5,
-        "avg_approval_time_hrs": 2.4
-    },
-    {
-        "hospital_id": "H044",
-        "hospital": "Breach Candy Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 20.9,
-        "avg_approval_time_hrs": 20.7
-    },
-    {
-        "hospital_id": "H044",
-        "hospital": "Breach Candy Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 8.3,
-        "avg_approval_time_hrs": 6.2
-    },
-    {
-        "hospital_id": "H044",
-        "hospital": "Breach Candy Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 26.7,
-        "avg_approval_time_hrs": 35.4
-    },
-    {
-        "hospital_id": "H045",
-        "hospital": "Primus Super Speciality Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 17.4,
-        "avg_approval_time_hrs": 15.2
-    },
-    {
-        "hospital_id": "H045",
-        "hospital": "Primus Super Speciality Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 8.1,
-        "avg_approval_time_hrs": 6.0
-    },
-    {
-        "hospital_id": "H045",
-        "hospital": "Primus Super Speciality Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 3.6,
-        "avg_approval_time_hrs": 1.8
-    },
-    {
-        "hospital_id": "H045",
-        "hospital": "Primus Super Speciality Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 23.5,
-        "avg_approval_time_hrs": 26.9
-    },
-    {
-        "hospital_id": "H045",
-        "hospital": "Primus Super Speciality Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 12.2,
-        "avg_approval_time_hrs": 10.1
-    },
-    {
-        "hospital_id": "H046",
-        "hospital": "Columbia Asia Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 5.8,
-        "avg_approval_time_hrs": 3.6
-    },
-    {
-        "hospital_id": "H046",
-        "hospital": "Columbia Asia Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 19.3,
-        "avg_approval_time_hrs": 18.1
-    },
-    {
-        "hospital_id": "H046",
-        "hospital": "Columbia Asia Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 11.7,
-        "avg_approval_time_hrs": 9.5
-    },
-    {
-        "hospital_id": "H046",
-        "hospital": "Columbia Asia Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 28.1,
-        "avg_approval_time_hrs": 38.3
-    },
-    {
-        "hospital_id": "H046",
-        "hospital": "Columbia Asia Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 7.4,
-        "avg_approval_time_hrs": 5.3
-    },
-    {
-        "hospital_id": "H047",
-        "hospital": "Rajiv Gandhi Govt General Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 24.9,
-        "avg_approval_time_hrs": 31.1
-    },
-    {
-        "hospital_id": "H047",
-        "hospital": "Rajiv Gandhi Govt General Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 12.5,
-        "avg_approval_time_hrs": 10.4
-    },
-    {
-        "hospital_id": "H047",
-        "hospital": "Rajiv Gandhi Govt General Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 7.0,
-        "avg_approval_time_hrs": 4.8
-    },
-    {
-        "hospital_id": "H047",
-        "hospital": "Rajiv Gandhi Govt General Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 19.8,
-        "avg_approval_time_hrs": 19.4
-    },
-    {
-        "hospital_id": "H047",
-        "hospital": "Rajiv Gandhi Govt General Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 4.0,
-        "avg_approval_time_hrs": 2.0
-    },
-    {
-        "hospital_id": "H048",
-        "hospital": "Omega Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 10.7,
-        "avg_approval_time_hrs": 8.5
-    },
-    {
-        "hospital_id": "H048",
-        "hospital": "Omega Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 22.1,
-        "avg_approval_time_hrs": 23.9
-    },
-    {
-        "hospital_id": "H048",
-        "hospital": "Omega Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 15.8,
-        "avg_approval_time_hrs": 13.6
-    },
-    {
-        "hospital_id": "H048",
-        "hospital": "Omega Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 6.6,
-        "avg_approval_time_hrs": 4.4
-    },
-    {
-        "hospital_id": "H048",
-        "hospital": "Omega Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 30.9,
-        "avg_approval_time_hrs": 49.3
-    },
-    {
-        "hospital_id": "H049",
-        "hospital": "Surya Mother Child Super Speciality",
-        "insurer": "StarHealth",
-        "rejection_rate": 7.7,
-        "avg_approval_time_hrs": 5.6
-    },
-    {
-        "hospital_id": "H049",
-        "hospital": "Surya Mother Child Super Speciality",
-        "insurer": "NivaBupa",
-        "rejection_rate": 14.9,
-        "avg_approval_time_hrs": 12.8
-    },
-    {
-        "hospital_id": "H049",
-        "hospital": "Surya Mother Child Super Speciality",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 5.3,
-        "avg_approval_time_hrs": 3.1
-    },
-    {
-        "hospital_id": "H049",
-        "hospital": "Surya Mother Child Super Speciality",
-        "insurer": "ICICILombard",
-        "rejection_rate": 21.6,
-        "avg_approval_time_hrs": 22.2
-    },
-    {
-        "hospital_id": "H049",
-        "hospital": "Surya Mother Child Super Speciality",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 9.8,
-        "avg_approval_time_hrs": 7.7
-    },
-    {
-        "hospital_id": "H050",
-        "hospital": "Care Hospital",
-        "insurer": "StarHealth",
-        "rejection_rate": 4.6,
-        "avg_approval_time_hrs": 2.5
-    },
-    {
-        "hospital_id": "H050",
-        "hospital": "Care Hospital",
-        "insurer": "NivaBupa",
-        "rejection_rate": 11.3,
-        "avg_approval_time_hrs": 9.2
-    },
-    {
-        "hospital_id": "H050",
-        "hospital": "Care Hospital",
-        "insurer": "HDFCErgo",
-        "rejection_rate": 8.7,
-        "avg_approval_time_hrs": 6.5
-    },
-    {
-        "hospital_id": "H050",
-        "hospital": "Care Hospital",
-        "insurer": "ICICILombard",
-        "rejection_rate": 17.2,
-        "avg_approval_time_hrs": 15.1
-    },
-    {
-        "hospital_id": "H050",
-        "hospital": "Care Hospital",
-        "insurer": "BajajAllianz",
-        "rejection_rate": 23.4,
-        "avg_approval_time_hrs": 26.4
+﻿[
+    {
+        "hospital_id":  "H003",
+        "hospital":  "Manipal Hospital",
+        "insurer":  "StarHealth",
+        "cashless_supported":  true,
+        "rejection_rate":  12.9,
+        "avg_approval_time_hrs":  8.7,
+        "common_rejection_reasons":  [
+                                         "Waiting period not yet completed",
+                                         "Room rent exceeds policy sub-limit"
+                                     ]
+    },
+    {
+        "hospital_id":  "H003",
+        "hospital":  "Manipal Hospital",
+        "insurer":  "NivaBupa",
+        "cashless_supported":  true,
+        "rejection_rate":  7.1,
+        "avg_approval_time_hrs":  4.2,
+        "common_rejection_reasons":  [
+                                         "Incomplete documents submitted"
+                                     ]
+    },
+    {
+        "hospital_id":  "H003",
+        "hospital":  "Manipal Hospital",
+        "insurer":  "HDFCErgo",
+        "cashless_supported":  true,
+        "rejection_rate":  18.3,
+        "avg_approval_time_hrs":  15.6,
+        "common_rejection_reasons":  [
+                                         "Treatment not covered under base policy",
+                                         "Experimental or investigational treatment"
+                                     ]
+    },
+    {
+        "hospital_id":  "H003",
+        "hospital":  "Manipal Hospital",
+        "insurer":  "ICICILombard",
+        "cashless_supported":  true,
+        "rejection_rate":  9.6,
+        "avg_approval_time_hrs":  6.9,
+        "common_rejection_reasons":  [
+                                         "Procedure categorised as cosmetic exclusion"
+                                     ]
+    },
+    {
+        "hospital_id":  "H003",
+        "hospital":  "Manipal Hospital",
+        "insurer":  "BajajAllianz",
+        "cashless_supported":  true,
+        "rejection_rate":  25.4,
+        "avg_approval_time_hrs":  22.1,
+        "common_rejection_reasons":  [
+                                         "Room rent exceeds policy sub-limit",
+                                         "Sub-limit exceeded for this treatment",
+                                         "Treatment not covered under base policy"
+                                     ]
+    },
+    {
+        "hospital_id":  "H018",
+        "hospital":  "Sakra World Hospital",
+        "insurer":  "StarHealth",
+        "cashless_supported":  true,
+        "rejection_rate":  11.3,
+        "avg_approval_time_hrs":  9.1,
+        "common_rejection_reasons":  [
+                                         "Sub-limit exceeded for this treatment",
+                                         "Non-disclosure of prior medical history"
+                                     ]
+    },
+    {
+        "hospital_id":  "H018",
+        "hospital":  "Sakra World Hospital",
+        "insurer":  "NivaBupa",
+        "cashless_supported":  true,
+        "rejection_rate":  5.7,
+        "avg_approval_time_hrs":  3.6,
+        "common_rejection_reasons":  [
+                                         "Pre-existing condition clause invoked"
+                                     ]
+    },
+    {
+        "hospital_id":  "H018",
+        "hospital":  "Sakra World Hospital",
+        "insurer":  "HDFCErgo",
+        "cashless_supported":  false,
+        "rejection_rate":  22.9,
+        "avg_approval_time_hrs":  26.7,
+        "common_rejection_reasons":  [
+                                         "Non-disclosure of prior medical history",
+                                         "Policy lapsed at time of admission",
+                                         "Procedure categorised as cosmetic exclusion"
+                                     ]
+    },
+    {
+        "hospital_id":  "H018",
+        "hospital":  "Sakra World Hospital",
+        "insurer":  "ICICILombard",
+        "cashless_supported":  true,
+        "rejection_rate":  8.6,
+        "avg_approval_time_hrs":  6.8,
+        "common_rejection_reasons":  [
+                                         "Room rent exceeds policy sub-limit"
+                                     ]
+    },
+    {
+        "hospital_id":  "H018",
+        "hospital":  "Sakra World Hospital",
+        "insurer":  "BajajAllianz",
+        "cashless_supported":  false,
+        "rejection_rate":  17.4,
+        "avg_approval_time_hrs":  15.3,
+        "common_rejection_reasons":  [
+                                         "Pre-existing condition clause invoked",
+                                         "Procedure categorised as cosmetic exclusion"
+                                     ]
+    },
+    {
+        "hospital_id":  "H032",
+        "hospital":  "BGS Gleneagles Global Hospital",
+        "insurer":  "StarHealth",
+        "cashless_supported":  true,
+        "rejection_rate":  15.7,
+        "avg_approval_time_hrs":  13.5,
+        "common_rejection_reasons":  [
+                                         "Mismatch between diagnosis and treatment codes",
+                                         "Policy lapsed at time of admission"
+                                     ]
+    },
+    {
+        "hospital_id":  "H032",
+        "hospital":  "BGS Gleneagles Global Hospital",
+        "insurer":  "NivaBupa",
+        "cashless_supported":  false,
+        "rejection_rate":  27.4,
+        "avg_approval_time_hrs":  36.8,
+        "common_rejection_reasons":  [
+                                         "Procedure categorised as cosmetic exclusion",
+                                         "Pre-existing condition clause invoked",
+                                         "Sub-limit exceeded for this treatment"
+                                     ]
+    },
+    {
+        "hospital_id":  "H032",
+        "hospital":  "BGS Gleneagles Global Hospital",
+        "insurer":  "HDFCErgo",
+        "cashless_supported":  false,
+        "rejection_rate":  8.5,
+        "avg_approval_time_hrs":  6.4,
+        "common_rejection_reasons":  [
+                                         "Pre-existing condition clause invoked"
+                                     ]
+    },
+    {
+        "hospital_id":  "H032",
+        "hospital":  "BGS Gleneagles Global Hospital",
+        "insurer":  "ICICILombard",
+        "cashless_supported":  true,
+        "rejection_rate":  3.5,
+        "avg_approval_time_hrs":  1.8,
+        "common_rejection_reasons":  [
+                                         "Sub-limit exceeded for this treatment"
+                                     ]
+    },
+    {
+        "hospital_id":  "H032",
+        "hospital":  "BGS Gleneagles Global Hospital",
+        "insurer":  "BajajAllianz",
+        "cashless_supported":  true,
+        "rejection_rate":  12.9,
+        "avg_approval_time_hrs":  10.8,
+        "common_rejection_reasons":  [
+                                         "Treatment not covered under base policy",
+                                         "Non-disclosure of prior medical history"
+                                     ]
+    },
+    {
+        "hospital_id":  "H046",
+        "hospital":  "Columbia Asia Hospital",
+        "insurer":  "StarHealth",
+        "cashless_supported":  true,
+        "rejection_rate":  5.8,
+        "avg_approval_time_hrs":  3.6,
+        "common_rejection_reasons":  [
+                                         "Non-disclosure of prior medical history"
+                                     ]
+    },
+    {
+        "hospital_id":  "H046",
+        "hospital":  "Columbia Asia Hospital",
+        "insurer":  "NivaBupa",
+        "cashless_supported":  true,
+        "rejection_rate":  19.3,
+        "avg_approval_time_hrs":  18.1,
+        "common_rejection_reasons":  [
+                                         "Claim filed after the stipulated deadline",
+                                         "Treatment not covered under base policy"
+                                     ]
+    },
+    {
+        "hospital_id":  "H046",
+        "hospital":  "Columbia Asia Hospital",
+        "insurer":  "HDFCErgo",
+        "cashless_supported":  false,
+        "rejection_rate":  11.7,
+        "avg_approval_time_hrs":  9.5,
+        "common_rejection_reasons":  [
+                                         "Waiting period not yet completed",
+                                         "Room rent exceeds policy sub-limit"
+                                     ]
+    },
+    {
+        "hospital_id":  "H046",
+        "hospital":  "Columbia Asia Hospital",
+        "insurer":  "ICICILombard",
+        "cashless_supported":  false,
+        "rejection_rate":  28.1,
+        "avg_approval_time_hrs":  38.3,
+        "common_rejection_reasons":  [
+                                         "Claim filed after the stipulated deadline",
+                                         "Treatment not covered under base policy",
+                                         "Room rent exceeds policy sub-limit"
+                                     ]
+    },
+    {
+        "hospital_id":  "H046",
+        "hospital":  "Columbia Asia Hospital",
+        "insurer":  "BajajAllianz",
+        "cashless_supported":  true,
+        "rejection_rate":  7.4,
+        "avg_approval_time_hrs":  5.3,
+        "common_rejection_reasons":  [
+                                         "Mismatch between diagnosis and treatment codes"
+                                     ]
     }
 ]
