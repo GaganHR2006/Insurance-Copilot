@@ -6,7 +6,7 @@ const now = () => new Date().toLocaleTimeString('en-US', { hour: '2-digit', minu
 const WELCOME = {
   id: 1,
   role: 'ai',
-  content: "Hello! I'm your Insurance Copilot powered by Groq AI. Ask me anything about insurance policies, coverage, exclusions, claims, or hospitals.",
+  content: "Hello! I'm your Insurance Copilot. Upload a policy and ask me anything — coverage details, exclusions, claim procedures, or anything else.",
   time: now(),
 };
 

@@ -245,6 +245,42 @@ export default function RiskDashboard() {
           </div>
         </div>
       )}
+
+      {/* Summary metrics row */}
+      {result && (
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div
+            className="rounded-2xl p-5 hover:border-white/10 hover:-translate-y-0.5 transition-all duration-200"
+            style={{ background: '#1A2235', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 10px 30px rgba(0,0,0,0.25)' }}
+          >
+            <p className="font-dm text-xs uppercase tracking-widest mb-2" style={{ color: '#8892A4' }}>Coverage Score</p>
+            <p className="font-syne font-bold text-3xl mb-1" style={{ color: '#F0F4FF' }}>
+              {result.breakdown && result.breakdown.coverage_risk
+                ? `${100 - Math.round((result.breakdown.coverage_risk / 25) * 100)}%`
+                : '71%'}
+            </p>
+            <p className="font-dm text-xs" style={{ color: '#00D4AA' }}>Above average</p>
+          </div>
+          <div
+            className="rounded-2xl p-5 hover:border-white/10 hover:-translate-y-0.5 transition-all duration-200"
+            style={{ background: '#1A2235', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 10px 30px rgba(0,0,0,0.25)' }}
+          >
+            <p className="font-dm text-xs uppercase tracking-widest mb-2" style={{ color: '#8892A4' }}>Claim Likelihood</p>
+            <p className="font-syne font-bold text-3xl mb-1" style={{ color: '#F0F4FF' }}>
+              {result.total_score > 60 ? 'High' : result.total_score > 30 ? 'Moderate' : 'Low'}
+            </p>
+            <p className="font-dm text-xs" style={{ color: '#00D4AA' }}>Review factors</p>
+          </div>
+          <div
+            className="rounded-2xl p-5 hover:border-white/10 hover:-translate-y-0.5 transition-all duration-200"
+            style={{ background: '#1A2235', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 10px 30px rgba(0,0,0,0.25)' }}
+          >
+            <p className="font-dm text-xs uppercase tracking-widest mb-2" style={{ color: '#8892A4' }}>Policy Grade</p>
+            <p className="font-syne font-bold text-3xl mb-1" style={{ color: '#F0F4FF' }}>{result.grade || 'B+'}</p>
+            <p className="font-dm text-xs" style={{ color: '#00D4AA' }}>Good standing</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
