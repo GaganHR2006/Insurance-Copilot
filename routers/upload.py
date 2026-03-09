@@ -8,60 +8,45 @@ import io
 router = APIRouter()
 
 
-# Try pdfplumber first, fall back to pypdf
+# Try pdfplumber first, fall back to pyPDF2
 def extract_text_from_pdf(file_bytes: bytes) -> str:
+    """Extract all text from uploaded PDF file. Try pdfplumber first, fallback to PyPDF2."""
     text = ""
-
-    # Method 1: pdfplumber
+    file = io.BytesIO(file_bytes)
+    
+    # Method 1: pdfplumber (better for complex layouts)
     try:
         import pdfplumber
-        with pdfplumber.open(io.BytesIO(file_bytes)) as pdf:
-            for i, page in enumerate(pdf.pages):
+        with pdfplumber.open(file) as pdf:
+            for page in pdf.pages:
                 page_text = page.extract_text()
                 if page_text:
                     text += page_text + "\n"
-        log("PDF_EXTRACT_pdfplumber", {
-            "chars_extracted": len(text),
-            "preview": text[:300]
-        })
-        if len(text.strip()) > 50:
+        if len(text.strip()) > 100:
+            print(f"[PDF] pdfplumber extracted {len(text)} characters")
+            print(f"[PDF] First 500 chars: {text[:500]}")
             return text
     except Exception as e:
-        log("PDF_EXTRACT_pdfplumber_ERROR", str(e))
-
-    # Method 2: pypdf fallback
+        print(f"[PDF] pdfplumber failed: {e}")
+    
+    # Method 2: PyPDF2 fallback
     try:
-        from pypdf import PdfReader
-        reader = PdfReader(io.BytesIO(file_bytes))
+        import PyPDF2
+        if hasattr(file, 'seek'):
+            file.seek(0)
+        reader = PyPDF2.PdfReader(file)
         for page in reader.pages:
             page_text = page.extract_text()
             if page_text:
                 text += page_text + "\n"
-        log("PDF_EXTRACT_pypdf", {
-            "chars_extracted": len(text),
-            "preview": text[:300]
-        })
-        if len(text.strip()) > 50:
-            return text
+        print(f"[PDF] PyPDF2 extracted {len(text)} characters")
+        print(f"[PDF] First 500 chars: {text[:500]}")
+        return text
     except Exception as e:
-        log("PDF_EXTRACT_pypdf_ERROR", str(e))
-
-    # Method 3: PyPDF2 fallback
-    try:
-        import PyPDF2
-        pdf_reader = PyPDF2.PdfReader(io.BytesIO(file_bytes))
-        for page in pdf_reader.pages:
-            page_text = page.extract_text()
-            if page_text:
-                text += page_text + "\n"
-        log("PDF_EXTRACT_PyPDF2", {
-            "chars_extracted": len(text),
-            "preview": text[:300]
-        })
-    except Exception as e:
-        log("PDF_EXTRACT_PyPDF2_ERROR", str(e))
-
-    return text
+        print(f"[PDF] PyPDF2 failed: {e}")
+    
+    print("[PDF] ERROR: Could not extract text from PDF")
+    return ""
 
 
 @router.post("")
@@ -167,6 +152,7 @@ async def upload_policy(file: UploadFile = File(...)):
         "status": "success",
         "filename": file.filename,
         "text_extracted_chars": len(pdf_text),
+        "extracted_text": pdf_text,
         "extracted": {
             "insurer": policy_info.get("insurer"),
             "policy_name": policy_info.get("policy_name"),

@@ -23,16 +23,16 @@ app.add_middleware(
 )
 
 # Include Routers
-app.include_router(chat.router, prefix="/chat", tags=["Chat"])
-app.include_router(risk_score.router, prefix="/risk-score", tags=["Risk Score"])
-app.include_router(eligibility.router, prefix="/eligibility", tags=["Eligibility"])
-app.include_router(hospitals.router, prefix="/hospitals", tags=["Hospitals"])
-app.include_router(bed_availability.router, prefix="/bed-availability", tags=["Bed Availability"])
-app.include_router(upload.router, prefix="/upload", tags=["Upload"])
-app.include_router(notifications.router, tags=["Notifications"])
+app.include_router(chat.router, prefix="/api/chat", tags=["Chat"])
+app.include_router(risk_score.router, prefix="/api/risk-score", tags=["Risk Score"])
+app.include_router(eligibility.router, prefix="/api/eligibility", tags=["Eligibility"])
+app.include_router(hospitals.router, prefix="/api/hospitals", tags=["Hospitals"])
+app.include_router(bed_availability.router, prefix="/api/bed-availability", tags=["Bed Availability"])
+app.include_router(upload.router, prefix="/api/upload", tags=["Upload"])
+app.include_router(notifications.router, prefix="/api", tags=["Notifications"])
 
 
-@app.get("/", tags=["Health"])
+@app.get("/api/health", tags=["Health"])
 async def health_check():
     """Health check endpoint."""
     return {"status": "ok", "service": "Insurance Copilot"}

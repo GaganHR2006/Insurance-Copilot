@@ -73,7 +73,10 @@ export default function RiskDashboard() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ policy_text: policyContext }),
       });
-      if (!res.ok) throw new Error(`Error ${res.status}: ${await res.text()}`);
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => null);
+        throw new Error(errorData?.error || 'Could not analyse PDF. Please re-upload your policy document.');
+      }
       const data = await res.json();
       setResult(data);
     } catch (err) {
@@ -125,7 +128,13 @@ export default function RiskDashboard() {
             ? <><Loader2 size={17} className="animate-spin" /> Analysing Policy…</>
             : 'Analyse Policy Risk'}
         </button>
-        {error && <p className="text-sm font-dm" style={{ color: '#FF4757' }}>{error}</p>}
+        {error && (
+          <div className="flex items-center gap-2 text-sm font-dm px-4 py-3 rounded-lg"
+            style={{ background: 'rgba(255,71,87,0.1)', color: '#FF4757', border: '1px solid rgba(255,71,87,0.2)' }}>
+            <ShieldAlert size={16} />
+            {error}
+          </div>
+        )}
       </div>
 
       {/* Results */}
@@ -255,11 +264,8 @@ export default function RiskDashboard() {
           >
             <p className="font-dm text-xs uppercase tracking-widest mb-2" style={{ color: '#8892A4' }}>Coverage Score</p>
             <p className="font-syne font-bold text-3xl mb-1" style={{ color: '#F0F4FF' }}>
-              {result.breakdown && result.breakdown.coverage_risk
-                ? `${100 - Math.round((result.breakdown.coverage_risk / 25) * 100)}%`
-                : '71%'}
+              {result.coverage_score}%
             </p>
-            <p className="font-dm text-xs" style={{ color: '#00D4AA' }}>Above average</p>
           </div>
           <div
             className="rounded-2xl p-5 hover:border-white/10 hover:-translate-y-0.5 transition-all duration-200"
@@ -267,17 +273,15 @@ export default function RiskDashboard() {
           >
             <p className="font-dm text-xs uppercase tracking-widest mb-2" style={{ color: '#8892A4' }}>Claim Likelihood</p>
             <p className="font-syne font-bold text-3xl mb-1" style={{ color: '#F0F4FF' }}>
-              {result.total_score > 60 ? 'High' : result.total_score > 30 ? 'Moderate' : 'Low'}
+              {result.claim_likelihood}
             </p>
-            <p className="font-dm text-xs" style={{ color: '#00D4AA' }}>Review factors</p>
           </div>
           <div
             className="rounded-2xl p-5 hover:border-white/10 hover:-translate-y-0.5 transition-all duration-200"
             style={{ background: '#1A2235', border: '1px solid rgba(255,255,255,0.05)', boxShadow: '0 10px 30px rgba(0,0,0,0.25)' }}
           >
             <p className="font-dm text-xs uppercase tracking-widest mb-2" style={{ color: '#8892A4' }}>Policy Grade</p>
-            <p className="font-syne font-bold text-3xl mb-1" style={{ color: '#F0F4FF' }}>{result.grade || 'B+'}</p>
-            <p className="font-dm text-xs" style={{ color: '#00D4AA' }}>Good standing</p>
+            <p className="font-syne font-bold text-3xl mb-1" style={{ color: '#F0F4FF' }}>{result.policy_grade_letter} - {result.policy_grade_label}</p>
           </div>
         </div>
       )}
