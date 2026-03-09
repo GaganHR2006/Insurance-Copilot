@@ -35,3 +35,4 @@ Thumbs.db
 data/session_policy.json
 data/verify_beds.py
 data/audit.py
+.vercel
