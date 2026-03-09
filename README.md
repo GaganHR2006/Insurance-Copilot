@@ -55,7 +55,6 @@ This repository is set up as a Monorepo:
    Create a `.env` file at the root folder based on `.env.example`:
    ```env
    GROQ_API_KEY=your_groq_api_key_here
-   TAMBO_API_KEY=your_tambo_api_key_here
    ```
 4. **Run the FastAPI server:**
    ```bash
