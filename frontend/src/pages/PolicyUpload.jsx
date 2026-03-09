@@ -54,6 +54,9 @@ export default function PolicyUpload() {
         `Please use this specific policy data to answer my next questions.`
       );
 
+      // Save the structured JSON for the dashboard/eligibility functions 
+      localStorage.setItem('insurance_pdf_data', JSON.stringify(data));
+
       setUploaded(true);
       handleUploadSuccess(data);
     } catch (err) {

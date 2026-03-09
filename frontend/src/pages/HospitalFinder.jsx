@@ -85,10 +85,18 @@ export default function HospitalFinder() {
     setHospitals([]);
     setPolicyCtx(null);
     try {
-      const params = new URLSearchParams();
-      if (city.trim()) params.set('city', city.trim());
-      if (treatment.trim()) params.set('treatment', treatment.trim());
-      const res = await fetch(`/api/hospitals?${params}`);
+      const storedPdf = localStorage.getItem('insurance_pdf_data');
+      const pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+
+      const res = await fetch('/api/hospitals/search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          city: city.trim(),
+          treatment: treatment.trim(),
+          pdf_policy: pdfPolicyData,
+        }),
+      });
       if (!res.ok) throw new Error(`Error ${res.status}`);
       const data = await res.json();
       // Each hospital already has bed_availability embedded by the backend

@@ -13,9 +13,10 @@ from fastapi import APIRouter
 from services.data_loader import (
     get_beds_for_hospital,
     get_network_for_hospital,
-    get_pdf_policy,
     load_hospital_network,
 )
+
+from pydantic import BaseModel, Field
 
 router = APIRouter()
 
@@ -171,18 +172,23 @@ def load_all_hospitals() -> List[Dict[str, Any]]:
     return merged
 
 
-@router.get("")
-async def get_hospitals(
-    city:      Optional[str] = None,
-    treatment: Optional[str] = None,
-):
+class HospitalSearchRequest(BaseModel):
+    city: Optional[str] = None
+    treatment: Optional[str] = None
+    pdf_policy: Optional[Dict[str, Any]] = Field(default_factory=dict)
+
+
+@router.post("/search")
+async def search_hospitals(request: HospitalSearchRequest):
     """
     Merged hospital search across hospitals.json + hospital_network.json.
     Beds joined from bed_availability.json; networks from hospital_network.json.
     Both city and treatment matching are case-insensitive with aliases.
     """
+    city = request.city
+    treatment = request.treatment
     all_hospitals = load_all_hospitals()
-    pdf_policy    = get_pdf_policy()
+    pdf_policy    = request.pdf_policy or {}
     user_insurer  = pdf_policy.get("insurer")
     user_covered  = [norm(t) for t in pdf_policy.get("covered_treatments", [])]
 

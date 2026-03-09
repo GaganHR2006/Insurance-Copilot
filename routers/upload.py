@@ -1,7 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 from services.pdf_extractor import extract_policy_info, extract_freebies
-from services.data_loader import store_pdf_policy, get_pdf_policy
 from utils.debug_logger import log
 import io
 
@@ -89,7 +88,6 @@ async def upload_policy(file: UploadFile = File(...)):
             "full_text": "",
             "extraction_failed": True
         }
-        store_pdf_policy(empty_policy)
         return JSONResponse(status_code=200, content={
             "status": "partial",
             "warning": "Could not extract text from PDF. "
@@ -137,29 +135,10 @@ async def upload_policy(file: UploadFile = File(...)):
     policy_info["full_text"] = pdf_text
     policy_info["filename"] = file.filename
 
-    # Store in session
-    store_pdf_policy(policy_info)
-
-    # Verify it was stored
-    stored = get_pdf_policy()
-    log("STORAGE_VERIFY", {
-        "stored_ok": bool(stored),
-        "insurer": stored.get("insurer"),
-        "freebies_count": len(stored.get("freebies", []))
-    })
-
     return {
         "status": "success",
         "filename": file.filename,
         "text_extracted_chars": len(pdf_text),
         "extracted_text": pdf_text,
-        "extracted": {
-            "insurer": policy_info.get("insurer"),
-            "policy_name": policy_info.get("policy_name"),
-            "covered_treatments": policy_info.get("covered_treatments", []),
-            "sum_insured": policy_info.get("sum_insured"),
-            "waiting_period_days": policy_info.get("waiting_period_days"),
-            "freebies": freebies,
-            "freebies_count": len(freebies),
-        }
+        "extracted": policy_info
     }

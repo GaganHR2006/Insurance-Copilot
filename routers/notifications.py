@@ -1,23 +1,32 @@
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
-from typing import Optional
-from services.data_loader import get_pdf_policy, store_pdf_policy
+from pydantic import BaseModel, Field
+from typing import Optional, Dict, Any
 from datetime import datetime
 
 router = APIRouter()
 
 
+class FreebiesRequest(BaseModel):
+    pdf_policy: Optional[Dict[str, Any]] = Field(default_factory=dict)
+
+
 class MarkUsedRequest(BaseModel):
     freebie_id: str
     used_count: int = 1
+    pdf_policy: Optional[Dict[str, Any]] = Field(default_factory=dict)
 
 
-@router.get("/notifications/freebies")
-async def get_freebies():
+class ResetRequest(BaseModel):
+    freebie_id: str
+    pdf_policy: Optional[Dict[str, Any]] = Field(default_factory=dict)
+
+
+@router.post("/notifications/freebies")
+async def get_freebies(request: FreebiesRequest):
     from utils.debug_logger import log
 
-    pdf = get_pdf_policy()
-    log("NOTIFICATIONS_GET", {
+    pdf = request.pdf_policy or {}
+    log("NOTIFICATIONS_POST", {
         "has_pdf": bool(pdf),
         "insurer": pdf.get("insurer") if pdf else None,
         "freebies_in_store": len(pdf.get("freebies", [])) if pdf else 0
@@ -45,7 +54,6 @@ async def get_freebies():
             from services.pdf_extractor import extract_freebies
             freebies = extract_freebies(pdf["full_text"])
             pdf["freebies"] = freebies
-            store_pdf_policy(pdf)
             log("FREEBIES_REEXTRACT_RESULT",
                 {"count": len(freebies)})
         except Exception as e:
@@ -75,7 +83,8 @@ async def get_freebies():
             "available": available,
             "used": sum(f.get("used", 0) for f in freebies),
             "total_value_inr": total_value,
-        }
+        },
+        "updated_pdf_policy": pdf, # Pass back in case re-extraction happened
     }
 
 
@@ -83,9 +92,9 @@ async def get_freebies():
 async def mark_freebie_used(request: MarkUsedRequest):
     """
     Mark a freebie as used (called when user avails a benefit).
-    Persists in session memory.
+    Returns updated pdf_policy to persist in frontend.
     """
-    pdf = get_pdf_policy()
+    pdf = request.pdf_policy or {}
     if not pdf:
         raise HTTPException(status_code=404,
                             detail="No policy uploaded.")
@@ -115,7 +124,6 @@ async def mark_freebie_used(request: MarkUsedRequest):
         )
 
     pdf["freebies"] = freebies
-    store_pdf_policy(pdf)
 
     return {
         "success": True,
@@ -123,25 +131,30 @@ async def mark_freebie_used(request: MarkUsedRequest):
         "updated_freebie": next(
             f for f in freebies
             if f["id"] == request.freebie_id
-        )
+        ),
+        "updated_pdf_policy": pdf
     }
 
 
 @router.post("/notifications/freebies/reset")
-async def reset_freebie(freebie_id: str):
+async def reset_freebie(request: ResetRequest):
     """Reset a freebie's used count (e.g. on policy renewal)."""
-    pdf = get_pdf_policy()
+    pdf = request.pdf_policy or {}
     if not pdf:
         raise HTTPException(status_code=404,
                             detail="No policy uploaded.")
     freebies = pdf.get("freebies", [])
     for f in freebies:
-        if f["id"] == freebie_id:
+        if f["id"] == request.freebie_id:
             total = f.get("total_per_cycle")
             f["used"] = 0
             f["remaining"] = total
             f["status"] = "available"
             break
+            
     pdf["freebies"] = freebies
-    store_pdf_policy(pdf)
-    return {"success": True, "message": f"{freebie_id} reset."}
+    return {
+        "success": True, 
+        "message": f"{request.freebie_id} reset.",
+        "updated_pdf_policy": pdf
+    }

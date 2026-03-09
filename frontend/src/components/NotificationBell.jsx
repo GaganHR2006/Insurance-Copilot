@@ -24,14 +24,32 @@ export default function NotificationBell() {
 
     const handleMarkUsed = async (id) => {
         try {
-            await fetch('/api/notifications/freebies/mark-used', {
+            const storedPdf = localStorage.getItem('insurance_pdf_data');
+            const pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+
+            const resUsed = await fetch('/api/notifications/freebies/mark-used', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ freebie_id: id, used_count: 1 })
+                body: JSON.stringify({ freebie_id: id, used_count: 1, pdf_policy: pdfPolicyData })
             });
 
+            if (resUsed.ok) {
+                const usedData = await resUsed.json();
+                if (usedData.updated_pdf_policy) {
+                    localStorage.setItem('insurance_pdf_data', JSON.stringify(usedData.updated_pdf_policy));
+                }
+            }
+
             // Re-fetch strictly after user action to update available/used counters
-            const res = await fetch('/api/notifications/freebies');
+            const newPdf = localStorage.getItem('insurance_pdf_data');
+            const newPdfPolicyData = newPdf ? JSON.parse(newPdf) : null;
+
+            const res = await fetch('/api/notifications/freebies', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pdf_policy: newPdfPolicyData })
+            });
+
             if (res.ok) {
                 const json = await res.json();
                 setPolicyFreebies(json.freebies || []);

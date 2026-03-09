@@ -5,7 +5,7 @@ PRIMARY source of truth, falling back to the JSON dataset.
 
 from typing import Optional
 
-from services.data_loader import load_policies, load_treatments, get_pdf_policy
+from services.data_loader import load_policies, load_treatments
 
 
 def normalize(text: str) -> str:
@@ -54,12 +54,13 @@ def check_eligibility(
     policy: str,
     age: int,
     waiting_period_served_days: int,
+    pdf_data: dict = None,
 ) -> dict:
     """
     Core eligibility check.
     PDF policy data always overrides the JSON dataset.
     """
-    pdf = get_pdf_policy()
+    pdf = pdf_data or {}
     pdf_uploaded = bool(pdf)
 
     # ── SOURCE 1: Uploaded PDF ────────────────────────────────────────────────

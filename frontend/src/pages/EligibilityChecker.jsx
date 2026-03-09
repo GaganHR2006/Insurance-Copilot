@@ -102,7 +102,14 @@ export default function EligibilityChecker() {
   useEffect(() => {
     (async () => {
       try {
-        const r = await fetch('/api/eligibility/policy-options');
+        const storedPdf = localStorage.getItem('insurance_pdf_data');
+        const pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+
+        const r = await fetch('/api/eligibility/policy-options', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pdf_policy: pdfPolicyData }),
+        });
         if (!r.ok) return;
         const data = await r.json();
         setPdfPolicy(data.pdf_policy);
@@ -123,6 +130,9 @@ export default function EligibilityChecker() {
     setError('');
     setResult(null);
     try {
+      const storedPdf = localStorage.getItem('insurance_pdf_data');
+      const pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+
       const res = await fetch('/api/eligibility', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -131,6 +141,7 @@ export default function EligibilityChecker() {
           policy: form.policy,
           age: parseInt(form.age, 10),
           waiting_period_served_days: parseInt(form.waiting_period_served_days, 10),
+          pdf_policy: pdfPolicyData,
         }),
       });
       if (!res.ok) throw new Error(`Error ${res.status}`);

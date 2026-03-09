@@ -3,11 +3,12 @@ Eligibility Router — delegates to eligibility_engine which uses
 PDF policy as primary source.
 """
 
+from typing import Optional, Dict, Any
 from fastapi import APIRouter
 from pydantic import BaseModel, Field
 
 from services.eligibility_engine import check_eligibility
-from services.data_loader import get_pdf_policy, load_policies
+from services.data_loader import load_policies
 
 router = APIRouter()
 
@@ -17,6 +18,7 @@ class EligibilityRequest(BaseModel):
     policy:                   str = ""
     age:                      int = Field(..., ge=1, le=120)
     waiting_period_served_days: int = Field(..., ge=0)
+    pdf_policy:               Optional[Dict[str, Any]] = Field(default_factory=dict)
 
 
 @router.post("")
@@ -30,17 +32,22 @@ async def check_eligibility_route(request: EligibilityRequest):
         policy=request.policy,
         age=request.age,
         waiting_period_served_days=request.waiting_period_served_days,
+        pdf_data=request.pdf_policy
     )
 
 
-@router.get("/policy-options")
-async def get_policy_options():
+class PolicyOptionsRequest(BaseModel):
+    pdf_policy: Optional[Dict[str, Any]] = Field(default_factory=dict)
+
+
+@router.post("/policy-options")
+async def get_policy_options(request: PolicyOptionsRequest):
     """
     Returns the policy to pre-select in the dropdown.
     If a PDF has been uploaded, returns that policy's details.
     Otherwise returns all policies from the dataset.
     """
-    pdf      = get_pdf_policy()
+    pdf      = request.pdf_policy or {}
     policies = load_policies()
 
     policy_list = [
