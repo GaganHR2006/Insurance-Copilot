@@ -90,7 +90,7 @@ The application is pre-configured to be deployed easily using Vercel.
 *   **Output Directory**: `frontend/dist`
 *   **(Important)** Root directory should be set to `./` (the default) so Vercel can process the FastAPI serverless functions located at the root.
 
-Make sure to add your `GROQ_API_KEY` and `TAMBO_API_KEY` to Vercel's Environment Variables during deployment!
+Make sure to add your `GROQ_API_KEY` to Vercel's Environment Variables during deployment!
 
 ---
 
