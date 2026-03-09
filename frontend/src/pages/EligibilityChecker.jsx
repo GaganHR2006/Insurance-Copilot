@@ -103,7 +103,10 @@ export default function EligibilityChecker() {
     (async () => {
       try {
         const storedPdf = localStorage.getItem('insurance_pdf_data');
-        const pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+        let pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+        if (pdfPolicyData && pdfPolicyData.extracted) {
+          pdfPolicyData = pdfPolicyData.extracted;
+        }
 
         const r = await fetch('/api/eligibility/policy-options', {
           method: 'POST',
@@ -131,7 +134,10 @@ export default function EligibilityChecker() {
     setResult(null);
     try {
       const storedPdf = localStorage.getItem('insurance_pdf_data');
-      const pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+      let pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+      if (pdfPolicyData && pdfPolicyData.extracted) {
+        pdfPolicyData = pdfPolicyData.extracted;
+      }
 
       const res = await fetch('/api/eligibility', {
         method: 'POST',

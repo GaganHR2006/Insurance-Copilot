@@ -25,7 +25,10 @@ export default function NotificationBell() {
     const handleMarkUsed = async (id) => {
         try {
             const storedPdf = localStorage.getItem('insurance_pdf_data');
-            const pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+            let pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+            if (pdfPolicyData && pdfPolicyData.extracted) {
+                pdfPolicyData = pdfPolicyData.extracted;
+            }
 
             const resUsed = await fetch('/api/notifications/freebies/mark-used', {
                 method: 'POST',
@@ -42,7 +45,10 @@ export default function NotificationBell() {
 
             // Re-fetch strictly after user action to update available/used counters
             const newPdf = localStorage.getItem('insurance_pdf_data');
-            const newPdfPolicyData = newPdf ? JSON.parse(newPdf) : null;
+            let newPdfPolicyData = newPdf ? JSON.parse(newPdf) : null;
+            if (newPdfPolicyData && newPdfPolicyData.extracted) {
+                newPdfPolicyData = newPdfPolicyData.extracted;
+            }
 
             const res = await fetch('/api/notifications/freebies', {
                 method: 'POST',

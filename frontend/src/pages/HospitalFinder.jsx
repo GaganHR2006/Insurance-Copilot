@@ -79,14 +79,18 @@ export default function HospitalFinder() {
   const [policyCtx, setPolicyCtx] = useState(null);
   const [error, setError] = useState('');
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
     setStatus('loading');
     setError('');
     setHospitals([]);
     setPolicyCtx(null);
     try {
       const storedPdf = localStorage.getItem('insurance_pdf_data');
-      const pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+      let pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
+      if (pdfPolicyData && pdfPolicyData.extracted) {
+        pdfPolicyData = pdfPolicyData.extracted;
+      }
 
       const res = await fetch('/api/hospitals/search', {
         method: 'POST',
