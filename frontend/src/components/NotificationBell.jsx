@@ -29,6 +29,10 @@ export default function NotificationBell() {
             if (pdfPolicyData && pdfPolicyData.extracted) {
                 pdfPolicyData = pdfPolicyData.extracted;
             }
+            if (pdfPolicyData) {
+                delete pdfPolicyData.full_text;
+                delete pdfPolicyData.raw_text_snippet;
+            }
 
             const resUsed = await fetch('/api/notifications/freebies/mark-used', {
                 method: 'POST',
@@ -48,6 +52,10 @@ export default function NotificationBell() {
             let newPdfPolicyData = newPdf ? JSON.parse(newPdf) : null;
             if (newPdfPolicyData && newPdfPolicyData.extracted) {
                 newPdfPolicyData = newPdfPolicyData.extracted;
+            }
+            if (newPdfPolicyData) {
+                delete newPdfPolicyData.full_text;
+                delete newPdfPolicyData.raw_text_snippet;
             }
 
             const res = await fetch('/api/notifications/freebies', {

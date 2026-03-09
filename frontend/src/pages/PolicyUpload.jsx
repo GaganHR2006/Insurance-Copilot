@@ -54,8 +54,15 @@ export default function PolicyUpload() {
         `Please use this specific policy data to answer my next questions.`
       );
 
+      // Clean up the massive text fields before saving to avoid 413 Payload Too Large
+      const cleanData = JSON.parse(JSON.stringify(data));
+      if (cleanData.extracted_text) delete cleanData.extracted_text;
+      if (cleanData.text) delete cleanData.text;
+      if (cleanData.extracted && cleanData.extracted.full_text) delete cleanData.extracted.full_text;
+      if (cleanData.extracted && cleanData.extracted.raw_text_snippet) delete cleanData.extracted.raw_text_snippet;
+
       // Save the structured JSON for the dashboard/eligibility functions 
-      localStorage.setItem('insurance_pdf_data', JSON.stringify(data));
+      localStorage.setItem('insurance_pdf_data', JSON.stringify(cleanData));
 
       setUploaded(true);
       handleUploadSuccess(data);

@@ -107,6 +107,10 @@ export default function EligibilityChecker() {
         if (pdfPolicyData && pdfPolicyData.extracted) {
           pdfPolicyData = pdfPolicyData.extracted;
         }
+        if (pdfPolicyData) {
+          delete pdfPolicyData.full_text;
+          delete pdfPolicyData.raw_text_snippet;
+        }
 
         const r = await fetch('/api/eligibility/policy-options', {
           method: 'POST',
@@ -137,6 +141,10 @@ export default function EligibilityChecker() {
       let pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
       if (pdfPolicyData && pdfPolicyData.extracted) {
         pdfPolicyData = pdfPolicyData.extracted;
+      }
+      if (pdfPolicyData) {
+        delete pdfPolicyData.full_text;
+        delete pdfPolicyData.raw_text_snippet;
       }
 
       const res = await fetch('/api/eligibility', {

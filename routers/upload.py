@@ -99,6 +99,28 @@ async def upload_policy(file: UploadFile = File(...)):
     # Extract structured policy info
     try:
         policy_info = extract_policy_info(pdf_text)
+        
+        # ── LLM Fallback for basic info ──
+        if not policy_info.get("insurer") or not policy_info.get("policy_name"):
+            log("UPLOAD_LLM_FALLBACK", "Regex missed insurer. Using Groq LLM...")
+            try:
+                from services.risk_engine import _call_groq
+                import re, json
+                prompt = f"""Read this insurance policy text and extract the Insurance Company (Insurer) and the Policy Name/Plan Name.
+Return ONLY a valid JSON object with keys "insurer" and "policy_name".
+Text:
+{pdf_text[:3500]}"""
+                raw_llm = await _call_groq(prompt, max_tokens=150)
+                match = re.search(r'\{.*\}', raw_llm, re.DOTALL)
+                if match:
+                    llm_data = json.loads(match.group())
+                    if llm_data.get("insurer") and not policy_info.get("insurer"):
+                        policy_info["insurer"] = llm_data["insurer"].strip()
+                    if llm_data.get("policy_name") and not policy_info.get("policy_name"):
+                        policy_info["policy_name"] = llm_data["policy_name"].strip()
+            except Exception as llm_e:
+                log("UPLOAD_LLM_ERROR", str(llm_e))
+
         log("POLICY_INFO_EXTRACTED", {
             "insurer": policy_info.get("insurer"),
             "policy_name": policy_info.get("policy_name"),

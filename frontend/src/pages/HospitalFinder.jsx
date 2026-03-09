@@ -91,6 +91,10 @@ export default function HospitalFinder() {
       if (pdfPolicyData && pdfPolicyData.extracted) {
         pdfPolicyData = pdfPolicyData.extracted;
       }
+      if (pdfPolicyData) {
+        delete pdfPolicyData.full_text;
+        delete pdfPolicyData.raw_text_snippet;
+      }
 
       const res = await fetch('/api/hospitals/search', {
         method: 'POST',
