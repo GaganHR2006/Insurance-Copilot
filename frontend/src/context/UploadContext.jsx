@@ -32,66 +32,33 @@ export function UploadProvider({ children }) {
         }
     }, []);
 
-    function storePolicy(extractedData) {
+    function storePolicy(data) {
         try {
+            const src = data?.extracted ?? data ?? {};
+
             // Normalize — handle any shape the backend returns
             const policy = {
-                insurer: extractedData?.insurer
-                    ?? extractedData?.extracted?.insurer
-                    ?? null,
-
-                policy_name: extractedData?.policy_name
-                    ?? extractedData?.extracted?.policy_name
-                    ?? null,
-
-                covered_treatments: extractedData?.covered_treatments
-                    ?? extractedData?.extracted?.covered_treatments
-                    ?? [],
-
-                exclusions: extractedData?.exclusions
-                    ?? extractedData?.extracted?.exclusions
-                    ?? [],
-
-                waiting_period_days: extractedData?.waiting_period_days
-                    ?? extractedData?.extracted?.waiting_period_days
-                    ?? null,
-
-                sum_insured: extractedData?.sum_insured
-                    ?? extractedData?.extracted?.sum_insured
-                    ?? null,
-
-                room_rent_cap: extractedData?.room_rent_cap
-                    ?? extractedData?.extracted?.room_rent_cap
-                    ?? null,
-
-                min_age: extractedData?.min_age
-                    ?? extractedData?.extracted?.min_age
-                    ?? 18,
-
-                max_age: extractedData?.max_age
-                    ?? extractedData?.extracted?.max_age
-                    ?? 65,
-
-                sub_limits: extractedData?.sub_limits
-                    ?? extractedData?.extracted?.sub_limits
-                    ?? {},
-
-                network_hospitals: extractedData?.network_hospitals
-                    ?? extractedData?.extracted?.network_hospitals
-                    ?? [],
-
-                freebies: extractedData?.freebies
-                    ?? extractedData?.extracted?.freebies
-                    ?? [],
+                insurer: src?.insurer ?? null,
+                policy_name: src?.policy_name ?? null,
+                covered_treatments: Array.isArray(src?.covered_treatments)
+                    ? src.covered_treatments : [],
+                exclusions: Array.isArray(src?.exclusions)
+                    ? src.exclusions : [],
+                waiting_period_days: src?.waiting_period_days ?? null,
+                sum_insured: src?.sum_insured ?? null,
+                room_rent_cap: src?.room_rent_cap ?? null,
+                min_age: src?.min_age ?? 18,
+                max_age: src?.max_age ?? 65,
+                sub_limits: src?.sub_limits ?? {},
+                network_hospitals: Array.isArray(src?.network_hospitals)
+                    ? src.network_hospitals : [],
+                freebies: Array.isArray(src?.freebies)
+                    ? src.freebies : [],
 
                 // Store full text for AI — limit to 4000 chars
-                full_text: (
-                    extractedData?.full_text
-                    ?? extractedData?.extracted?.full_text
-                    ?? ""
-                ).slice(0, 4000),
+                full_text: (data?.full_text ?? src?.full_text ?? "").slice(0, 4000),
 
-                filename: extractedData?.filename ?? "",
+                filename: data?.filename ?? "",
                 uploaded_at: new Date().toISOString(),
             };
 

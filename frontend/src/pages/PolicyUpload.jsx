@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CloudUpload, CheckCircle2, FileText, X } from 'lucide-react';
 import { useUpload } from '../context/UploadContext';
+import { extractTextFromPDF } from '../utils/pdfExtractor';
 
 export default function PolicyUpload() {
   const { handleUploadSuccess, resetUpload, storePolicy } = useUpload();
@@ -10,6 +11,7 @@ export default function PolicyUpload() {
   const [uploading, setUploading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
   const [error, setError] = useState('');
+  const [progress, setProgress] = useState("");
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
@@ -25,65 +27,84 @@ export default function PolicyUpload() {
 
   const handleUpload = async () => {
     if (!file) return;
+
     setUploading(true);
     setError('');
-    resetUpload();
-
-    const formData = new FormData();
-    formData.append('file', file);
-
-    // Abort controller for timeout
-    const controller = new AbortController();
-    const timeoutId = setTimeout(
-      () => controller.abort(), 25000  // 25s frontend timeout
-    );
+    setUploaded(false);
+    resetUpload?.(); // Call safely if exists
 
     try {
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
+      // STEP 1: Extract text in browser
+      setProgress("Reading PDF...");
+      console.log("[Upload] Extracting text from PDF in browser...");
+
+      const pdfText = await extractTextFromPDF(file);
+      console.log("[Upload] Extracted text length:", pdfText.length);
+
+      if (pdfText.length < 20) {
+        throw new Error(
+          "Could not read text from this PDF. " +
+          "It may be a scanned image. Try a text-based PDF."
+        );
+      }
+
+      // STEP 2: Send text to backend
+      setProgress("Analysing policy...");
+      console.log("[Upload] Sending text to backend...");
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(
+        () => controller.abort(), 20000
+      );
+
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          text: pdfText,
+          filename: file.name,
+        }),
         signal: controller.signal,
       });
       clearTimeout(timeoutId);
 
       if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.detail || `Server error ${res.status}`);
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.detail || `Server error: ${res.status}`);
       }
 
       const data = await res.json();
-      console.log("[Upload] API response:", {
+      console.log("[Upload] Backend response:", {
         status: data.status,
         insurer: data.extracted?.insurer,
         treatments: data.extracted?.covered_treatments?.length,
-        textChars: data.full_text?.length,
       });
 
+      // STEP 3: Save to localStorage
+      setProgress("Saving...");
       const saved = storePolicy({
         ...data.extracted,
-        full_text: data.full_text ?? "",
+        full_text: data.full_text ?? pdfText.slice(0, 4000),
         filename: file.name,
       });
 
-      if (saved) {
-        console.log("[Upload] Saved to localStorage:", saved);
-        setUploaded(true);
-        handleUploadSuccess(data);
-      } else {
-        console.error("[Upload] storePolicy returned null");
-      }
+      console.log("[Upload] Saved to localStorage:", {
+        insurer: saved?.insurer,
+        treatments: saved?.covered_treatments?.length,
+      });
+
+      setUploaded(true);
+      if (handleUploadSuccess) handleUploadSuccess(data);
+      setProgress("");
 
     } catch (err) {
-      clearTimeout(timeoutId);
-      if (err.name === "AbortError") {
-        setError(
-          "Upload timed out. PDF may be too large or complex. " +
-          "Try a smaller PDF."
-        );
-      } else {
-        setError(`Upload failed: ${err.message}`);
-      }
       console.error("[Upload] Error:", err);
+      if (err.name === "AbortError") {
+        setError("Request timed out. Please try again.");
+      } else {
+        setError(err.message || "Upload failed.");
+      }
+      setProgress("");
     } finally {
       setUploading(false);
     }
@@ -168,14 +189,26 @@ export default function PolicyUpload() {
             {file && (
               <button
                 onClick={handleUpload}
-                disabled={uploading}
+                disabled={uploading || !file}
                 className="w-full flex items-center justify-center gap-2 font-bold rounded-xl px-6 py-3 font-dm transition-all duration-200 disabled:opacity-70"
-                style={{ background: '#00D4AA', color: '#0A0F1E' }}
+                style={{
+                  background: uploading ? 'rgba(0,191,165,0.7)' : '#00BFA5',
+                  color: '#0A0F1E',
+                  cursor: uploading ? 'not-allowed' : 'pointer'
+                }}
               >
                 {uploading ? (
                   <>
-                    <span className="inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                    Uploading... (may take up to 20s)
+                    <span style={{
+                      width: 18, height: 18,
+                      border: "2px solid rgba(255,255,255,0.4)",
+                      borderTopColor: "white",
+                      borderRadius: "50%",
+                      animation: "spin 0.7s linear infinite",
+                      display: "inline-block",
+                      flexShrink: 0,
+                    }} />
+                    {progress || "Processing..."}
                   </>
                 ) : (
                   'Upload Policy'
@@ -196,6 +229,12 @@ export default function PolicyUpload() {
                 ✗ {error}
               </div>
             )}
+
+            <style>{`
+              @keyframes spin {
+                to { transform: rotate(360deg); }
+              }
+            `}</style>
           </>
         ) : (
           /* Success state */
@@ -205,7 +244,8 @@ export default function PolicyUpload() {
             </div>
             <h3 className="font-syne font-bold text-2xl" style={{ color: '#F0F4FF' }}>Policy uploaded successfully!</h3>
             <p className="font-dm text-sm text-center" style={{ color: '#8892A4' }}>
-              Your policy is ready for analysis. Our AI will extract coverage details, exclusions, and more.
+              ✓ Policy analysed and saved.<br />
+              All features now use your policy data.
             </p>
             <button
               onClick={() => navigate('/chat')}
