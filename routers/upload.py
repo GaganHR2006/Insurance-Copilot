@@ -1,166 +1,154 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
-from services.pdf_extractor import extract_policy_info, extract_freebies
-from utils.debug_logger import log
+from services.pdf_extractor import extract_policy_info
 import io
+import asyncio
 
 router = APIRouter()
 
 
-# Try pdfplumber first, fall back to pyPDF2
-def extract_text_from_pdf(file_bytes: bytes) -> str:
-    """Extract all text from uploaded PDF file. Try pdfplumber first, fallback to PyPDF2."""
+def fast_extract_text(file_bytes: bytes,
+                      max_pages: int = 5,
+                      max_chars: int = 3000) -> str:
+    """
+    Extract text from PDF quickly.
+    Only reads first max_pages pages.
+    Stops after max_chars characters.
+    Uses pypdf (fastest) then pdfplumber as fallback.
+    """
     text = ""
-    file = io.BytesIO(file_bytes)
-    
-    # Method 1: pdfplumber (better for complex layouts)
+
+    # Method 1: pypdf (fastest, no heavy dependencies)
     try:
-        import pdfplumber
-        with pdfplumber.open(file) as pdf:
-            for page in pdf.pages:
-                page_text = page.extract_text()
-                if page_text:
-                    text += page_text + "\n"
+        from pypdf import PdfReader
+        reader = PdfReader(io.BytesIO(file_bytes))
+        pages_to_read = min(len(reader.pages), max_pages)
+        for i in range(pages_to_read):
+            page_text = reader.pages[i].extract_text() or ""
+            text += page_text + "\n"
+            if len(text) >= max_chars:
+                break
+        text = text[:max_chars]
         if len(text.strip()) > 100:
-            print(f"[PDF] pdfplumber extracted {len(text)} characters")
-            print(f"[PDF] First 500 chars: {text[:500]}")
+            print(f"[Upload] pypdf extracted {len(text)} chars")
             return text
     except Exception as e:
-        print(f"[PDF] pdfplumber failed: {e}")
-    
-    # Method 2: PyPDF2 fallback
+        print(f"[Upload] pypdf failed: {e}")
+
+    # Method 2: pdfplumber (fallback)
     try:
-        import PyPDF2
-        if hasattr(file, 'seek'):
-            file.seek(0)
-        reader = PyPDF2.PdfReader(file)
-        for page in reader.pages:
-            page_text = page.extract_text()
-            if page_text:
+        import pdfplumber
+        with pdfplumber.open(io.BytesIO(file_bytes)) as pdf:
+            pages_to_read = min(len(pdf.pages), max_pages)
+            for i in range(pages_to_read):
+                page_text = pdf.pages[i].extract_text() or ""
                 text += page_text + "\n"
-        print(f"[PDF] PyPDF2 extracted {len(text)} characters")
-        print(f"[PDF] First 500 chars: {text[:500]}")
+                if len(text) >= max_chars:
+                    break
+        text = text[:max_chars]
+        print(f"[Upload] pdfplumber extracted {len(text)} chars")
         return text
     except Exception as e:
-        print(f"[PDF] PyPDF2 failed: {e}")
-    
-    print("[PDF] ERROR: Could not extract text from PDF")
-    return ""
+        print(f"[Upload] pdfplumber failed: {e}")
+
+    return text
 
 
 @router.post("")
 async def upload_policy(file: UploadFile = File(...)):
-    log("UPLOAD_START", {"filename": file.filename,
-                          "content_type": file.content_type})
+    print(f"[Upload] Started: {file.filename}")
 
-    # Validate file type
-    if not (file.filename.endswith(".pdf") or
-            file.content_type == "application/pdf"):
-        raise HTTPException(
-            status_code=400,
-            detail="Only PDF files accepted."
-        )
+    # Validate
+    if not (file.filename.lower().endswith(".pdf")
+            or file.content_type == "application/pdf"):
+        raise HTTPException(400, "Only PDF files accepted.")
 
-    # Read bytes
+    # Read file bytes
     try:
         contents = await file.read()
-        log("UPLOAD_READ", {"bytes": len(contents)})
+        print(f"[Upload] Read {len(contents)} bytes")
     except Exception as e:
+        raise HTTPException(500, f"File read failed: {e}")
+
+    # Check file size (Vercel limit: 4.5MB body)
+    if len(contents) > 4 * 1024 * 1024:
         raise HTTPException(
-            status_code=500,
-            detail=f"Failed to read file: {str(e)}"
+            413,
+            "PDF too large. Please upload a PDF under 4MB."
         )
 
-    # Extract text
-    pdf_text = extract_text_from_pdf(contents)
-    log("PDF_TEXT_LENGTH", {"chars": len(pdf_text)})
+    # Extract text with timeout safety
+    try:
+        pdf_text = await asyncio.wait_for(
+            asyncio.get_event_loop().run_in_executor(
+                None, fast_extract_text, contents
+            ),
+            timeout=8.0  # 8s max — Vercel limit is 10s
+        )
+    except asyncio.TimeoutError:
+        print("[Upload] Text extraction timed out")
+        pdf_text = ""
+    except Exception as e:
+        print(f"[Upload] Extraction error: {e}")
+        pdf_text = ""
 
+    print(f"[Upload] Extracted {len(pdf_text)} chars")
+
+    # Extract policy info from text
     if len(pdf_text.strip()) < 20:
-        # Return partial success — store what we can
-        log("PDF_TEXT_EMPTY", "Could not extract meaningful text")
-        empty_policy = {
-            "insurer": None,
-            "policy_name": file.filename.replace(".pdf", ""),
-            "covered_treatments": [],
-            "exclusions": [],
-            "freebies": [],
-            "freebies_count": 0,
-            "full_text": "",
-            "extraction_failed": True
-        }
-        return JSONResponse(status_code=200, content={
+        # Return minimal response so frontend doesn't hang
+        return JSONResponse({
             "status": "partial",
-            "warning": "Could not extract text from PDF. "
-                       "It may be a scanned image PDF.",
+            "warning": "Could not read PDF text. "
+                       "It may be a scanned/image PDF.",
             "filename": file.filename,
-            "extracted": empty_policy
+            "full_text": "",
+            "extracted": {
+                "insurer": None,
+                "policy_name": file.filename.replace(".pdf",""),
+                "covered_treatments": [],
+                "exclusions": [],
+                "waiting_period_days": None,
+                "sum_insured": None,
+                "room_rent_cap": None,
+                "min_age": 18,
+                "max_age": 65,
+                "sub_limits": {},
+                "network_hospitals": [],
+                "freebies": [],
+                "freebies_count": 0,
+            }
         })
 
-    # Extract structured policy info
+    # Parse structured data
     try:
         policy_info = extract_policy_info(pdf_text)
-        
-        # ── LLM Fallback for basic info ──
-        if not policy_info.get("insurer") or not policy_info.get("policy_name"):
-            log("UPLOAD_LLM_FALLBACK", "Regex missed insurer. Using Groq LLM...")
-            try:
-                from services.risk_engine import _call_groq
-                import re, json
-                prompt = f"""Read this insurance policy text and extract the Insurance Company (Insurer) and the Policy Name/Plan Name.
-Return ONLY a valid JSON object with keys "insurer" and "policy_name".
-Text:
-{pdf_text[:3500]}"""
-                raw_llm = await _call_groq(prompt, max_tokens=150)
-                match = re.search(r'\{.*\}', raw_llm, re.DOTALL)
-                if match:
-                    llm_data = json.loads(match.group())
-                    if llm_data.get("insurer") and not policy_info.get("insurer"):
-                        policy_info["insurer"] = llm_data["insurer"].strip()
-                    if llm_data.get("policy_name") and not policy_info.get("policy_name"):
-                        policy_info["policy_name"] = llm_data["policy_name"].strip()
-            except Exception as llm_e:
-                log("UPLOAD_LLM_ERROR", str(llm_e))
-
-        log("POLICY_INFO_EXTRACTED", {
-            "insurer": policy_info.get("insurer"),
-            "policy_name": policy_info.get("policy_name"),
-            "covered_treatments": policy_info.get("covered_treatments"),
-            "waiting_period_days": policy_info.get("waiting_period_days"),
-            "freebies_count": len(policy_info.get("freebies", []))
-        })
     except Exception as e:
-        log("POLICY_EXTRACT_ERROR", str(e))
-        raise HTTPException(
-            status_code=500,
-            detail=f"Policy extraction failed: {str(e)}"
-        )
+        print(f"[Upload] extract_policy_info failed: {e}")
+        policy_info = {
+            "insurer": None,
+            "policy_name": None,
+            "covered_treatments": [],
+            "exclusions": [],
+            "waiting_period_days": None,
+            "sum_insured": None,
+            "room_rent_cap": None,
+            "min_age": 18,
+            "max_age": 65,
+            "sub_limits": {},
+            "network_hospitals": [],
+            "freebies": [],
+        }
 
-    # Extract freebies separately (with full debug)
-    try:
-        freebies = extract_freebies(pdf_text)
-        log("FREEBIES_EXTRACTED", {
-            "count": len(freebies),
-            "freebies": [
-                {"id": f["id"], "label": f["label"],
-                 "total": f.get("total_per_cycle")}
-                for f in freebies
-            ]
-        })
-        policy_info["freebies"] = freebies
-        policy_info["freebies_count"] = len(freebies)
-    except Exception as e:
-        log("FREEBIES_EXTRACT_ERROR", str(e))
-        policy_info["freebies"] = []
-        policy_info["freebies_count"] = 0
+    policy_info["freebies_count"] = len(
+        policy_info.get("freebies", [])
+    )
 
-    # Store full text for AI context
-    policy_info["full_text"] = pdf_text
-    policy_info["filename"] = file.filename
+    print(f"[Upload] Done. Insurer: {policy_info.get('insurer')}")
 
     return {
         "status": "success",
         "filename": file.filename,
-        "text_extracted_chars": len(pdf_text),
-        "extracted_text": pdf_text,
-        "extracted": policy_info
+        "full_text": pdf_text,
+        "extracted": policy_info,
     }

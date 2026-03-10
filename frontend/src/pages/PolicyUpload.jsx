@@ -32,30 +32,58 @@ export default function PolicyUpload() {
     const formData = new FormData();
     formData.append('file', file);
 
+    // Abort controller for timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(
+      () => controller.abort(), 25000  // 25s frontend timeout
+    );
+
     try {
       const res = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
-      if (!res.ok) throw new Error(await res.text() || 'Failed to upload document');
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.detail || `Server error ${res.status}`);
+      }
 
       const data = await res.json();
+      console.log("[Upload] API response:", {
+        status: data.status,
+        insurer: data.extracted?.insurer,
+        treatments: data.extracted?.covered_treatments?.length,
+        textChars: data.full_text?.length,
+      });
 
-      console.log("[Upload] Raw API response:", data);
-
-      // Pass the ENTIRE response — storePolicy handles any shape
-      const saved = storePolicy(data);
+      const saved = storePolicy({
+        ...data.extracted,
+        full_text: data.full_text ?? "",
+        filename: file.name,
+      });
 
       if (saved) {
-        console.log("[Upload] Success. Insurer:", saved.insurer);
+        console.log("[Upload] Saved to localStorage:", saved);
         setUploaded(true);
         handleUploadSuccess(data);
       } else {
         console.error("[Upload] storePolicy returned null");
       }
+
     } catch (err) {
-      setError(err.message || 'Error parsing PDF. Please try a different document.');
+      clearTimeout(timeoutId);
+      if (err.name === "AbortError") {
+        setError(
+          "Upload timed out. PDF may be too large or complex. " +
+          "Try a smaller PDF."
+        );
+      } else {
+        setError(`Upload failed: ${err.message}`);
+      }
+      console.error("[Upload] Error:", err);
     } finally {
       setUploading(false);
     }
@@ -147,7 +175,7 @@ export default function PolicyUpload() {
                 {uploading ? (
                   <>
                     <span className="inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                    Uploading…
+                    Uploading... (may take up to 20s)
                   </>
                 ) : (
                   'Upload Policy'
@@ -156,9 +184,17 @@ export default function PolicyUpload() {
             )}
 
             {error && (
-              <p className="text-center text-sm font-dm" style={{ color: '#FF4757' }}>
-                {error}
-              </p>
+              <div style={{
+                marginTop: "12px",
+                padding: "12px 16px",
+                background: "rgba(239,68,68,0.1)",
+                border: "1px solid rgba(239,68,68,0.3)",
+                borderRadius: "8px",
+                color: "#EF4444",
+                fontSize: "13px",
+              }}>
+                ✗ {error}
+              </div>
             )}
           </>
         ) : (
