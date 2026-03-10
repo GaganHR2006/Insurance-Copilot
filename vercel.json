@@ -3,10 +3,10 @@
     "env": {
         "UV_LINK_MODE": "copy"
     },
-    "routes": [
+    "rewrites": [
         {
-            "src": "/(.*)",
-            "dest": "api/index.py"
+            "source": "/(.*)",
+            "destination": "/api/index.py"
         }
     ],
     "functions": {
