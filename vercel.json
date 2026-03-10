@@ -3,15 +3,6 @@
     "env": {
         "UV_LINK_MODE": "copy"
     },
-    "builds": [
-        {
-            "src": "api/index.py",
-            "use": "@vercel/python",
-            "config": {
-                "maxLambdaSize": "50mb"
-            }
-        }
-    ],
     "routes": [
         {
             "src": "/(.*)",
