@@ -8,6 +8,7 @@ const STORAGE_KEY = "ic_policy";
 export function UploadProvider({ children }) {
     const [policyData, setPolicyData] = useState(null);
     const [pdfUploaded, setPdfUploaded] = useState(false);
+    const [policyFreebies, setPolicyFreebies] = useState([]);
 
     // Restore from localStorage on app start
     useEffect(() => {
@@ -17,6 +18,9 @@ export function UploadProvider({ children }) {
                 const parsed = JSON.parse(stored);
                 setPolicyData(parsed);
                 setPdfUploaded(true);
+                if (parsed?.freebies) {
+                    setPolicyFreebies(parsed.freebies);
+                }
                 console.log("[UploadContext] Restored from localStorage:",
                     parsed?.insurer,
                     "| treatments:", parsed?.covered_treatments?.length,
@@ -94,6 +98,7 @@ export function UploadProvider({ children }) {
             localStorage.setItem(STORAGE_KEY, JSON.stringify(policy));
             setPolicyData(policy);
             setPdfUploaded(true);
+            setPolicyFreebies(policy.freebies);
 
             console.log("[UploadContext] Stored policy:", {
                 insurer: policy.insurer,
@@ -115,6 +120,7 @@ export function UploadProvider({ children }) {
         localStorage.removeItem(STORAGE_KEY);
         setPolicyData(null);
         setPdfUploaded(false);
+        setPolicyFreebies([]);
     }
 
     // Build context object to send with every API call
@@ -143,6 +149,9 @@ export function UploadProvider({ children }) {
             storePolicy,
             clearPolicy,
             getPolicyContext,
+            policyFreebies,
+            setPolicyFreebies,
+            policyInsurer: policyData?.insurer || null
         }}>
             {children}
         </UploadContext.Provider>

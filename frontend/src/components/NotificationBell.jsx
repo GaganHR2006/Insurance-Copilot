@@ -73,7 +73,7 @@ export default function NotificationBell() {
         }
     };
 
-    const activeCount = policyFreebies.filter(f => f.status !== "fully_used").length;
+    const activeCount = (policyFreebies || []).filter(f => f.status !== "fully_used").length;
 
     const renderPanelContent = () => {
         // STATE 1: PDF not uploaded yet — show prompt only
@@ -110,7 +110,7 @@ export default function NotificationBell() {
         }
 
         // STATE 2: PDF uploaded but no freebies found
-        if (pdfUploaded && policyFreebies.length === 0) {
+        if (pdfUploaded && (policyFreebies || []).length === 0) {
             return (
                 <div style={{ padding: "24px", textAlign: "center" }}>
                     <p style={{ fontSize: "32px", margin: 0 }}>✅</p>
@@ -125,7 +125,7 @@ export default function NotificationBell() {
         }
 
         // STATE 3: PDF uploaded AND freebies found — show list
-        const uniqueFreebies = policyFreebies.filter(
+        const uniqueFreebies = (policyFreebies || []).filter(
             (freebie, index, self) =>
                 index === self.findIndex(f => f.id === freebie.id)
         );
