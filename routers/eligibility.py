@@ -19,6 +19,7 @@ class EligibilityRequest(BaseModel):
     age:                      int = Field(..., ge=1, le=120)
     waiting_period_served_days: int = Field(..., ge=0)
     pdf_policy:               Optional[Dict[str, Any]] = Field(default_factory=dict)
+    policy_context:           Optional[Dict[str, Any]] = Field(default_factory=dict)
 
 
 @router.post("")
@@ -27,12 +28,14 @@ async def check_eligibility_route(request: EligibilityRequest):
     Check treatment eligibility.
     Uses uploaded PDF as primary source; falls back to policies.json.
     """
+    ctx = request.policy_context or request.pdf_policy or {}
+
     return check_eligibility(
         treatment=request.treatment,
         policy=request.policy,
         age=request.age,
         waiting_period_served_days=request.waiting_period_served_days,
-        pdf_data=request.pdf_policy
+        pdf_data=ctx
     )
 
 

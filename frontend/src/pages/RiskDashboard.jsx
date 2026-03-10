@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Loader2, ShieldAlert, CheckCircle2 } from 'lucide-react';
+import { useUpload } from '../context/UploadContext';
 
 const R = 80;
 const CIRC = 2 * Math.PI * R;
@@ -52,8 +53,7 @@ export default function RiskDashboard() {
   const [error, setError] = useState('');
   const circleRef = useRef(null);
 
-  // Read uploaded PDF context from localStorage (set by PolicyUpload)
-  const policyContext = localStorage.getItem('insurance_policy_context') || '';
+  const { pdfUploaded, policyData, getPolicyContext } = useUpload();
 
   useEffect(() => {
     if (result && circleRef.current) {
@@ -68,16 +68,29 @@ export default function RiskDashboard() {
     setError('');
     setResult(null);
     try {
+      const ctx = getPolicyContext();
+
+      console.log("[RiskScore] Sending with context:", {
+        insurer: ctx?.insurer,
+        treatments: ctx?.covered_treatments?.length,
+        textChars: ctx?.full_text?.length,
+      });
+
       const res = await fetch('/api/risk-score', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ policy_text: policyContext }),
+        body: JSON.stringify({
+          policy_context: ctx,
+          policy_text: ctx?.full_text ?? "",
+          pdf_policy: ctx,
+        }),
       });
       if (!res.ok) {
         const errorData = await res.json().catch(() => null);
         throw new Error(errorData?.error || 'Could not analyse PDF. Please re-upload your policy document.');
       }
       const data = await res.json();
+      console.log("[RiskScore] Result:", data);
       setResult(data);
     } catch (err) {
       setError(err.message || 'Could not reach backend. Make sure FastAPI is running.');
@@ -86,8 +99,16 @@ export default function RiskDashboard() {
     }
   };
 
+  // Trigger recalculation when policy data loads
+  useEffect(() => {
+    if (pdfUploaded && policyData) {
+      console.log("[RiskScore] PDF data available, calculating...");
+      handleCalculate();
+    }
+  }, [pdfUploaded, policyData]);
+
   const arcColor = result ? (COLOR_MAP[result.color] || '#00D4AA') : '#00D4AA';
-  const hasPolicyContext = policyContext.length > 50;
+  const hasPolicyContext = pdfUploaded && policyData;
 
   return (
     <div className="page-enter space-y-6">

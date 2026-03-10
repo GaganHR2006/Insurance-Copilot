@@ -3,6 +3,7 @@ import {
   CheckCircle2, XCircle, Loader2, AlertTriangle,
   ShieldCheck, FileText, Database, ChevronRight,
 } from 'lucide-react';
+import { useUpload } from '../context/UploadContext';
 
 const inputCls =
   'w-full rounded-xl px-4 py-3 text-sm font-dm bg-[#0D1322] border border-white/10 ' +
@@ -98,24 +99,26 @@ export default function EligibilityChecker() {
   const [policyOptions, setPolicyOptions] = useState([]); // fallback list
   const [optLoading, setOptLoading] = useState(true);
 
+  const { pdfUploaded, policyData, getPolicyContext } = useUpload();
+
+  // Pre-fill policy field from stored data
+  useEffect(() => {
+    if (policyData?.insurer) {
+      setForm(f => ({ ...f, policy: policyData.insurer }));
+      console.log("[Eligibility] Pre-filled policy:", policyData.insurer);
+    }
+  }, [policyData]);
+
   // ── Auto-load policy options on mount ────────────────────────────────────
   useEffect(() => {
     (async () => {
       try {
-        const storedPdf = localStorage.getItem('insurance_pdf_data');
-        let pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
-        if (pdfPolicyData && pdfPolicyData.extracted) {
-          pdfPolicyData = pdfPolicyData.extracted;
-        }
-        if (pdfPolicyData) {
-          delete pdfPolicyData.full_text;
-          delete pdfPolicyData.raw_text_snippet;
-        }
+        const ctx = getPolicyContext();
 
         const r = await fetch('/api/eligibility/policy-options', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pdf_policy: pdfPolicyData }),
+          body: JSON.stringify({ pdf_policy: ctx }),
         });
         if (!r.ok) return;
         const data = await r.json();
@@ -137,29 +140,30 @@ export default function EligibilityChecker() {
     setError('');
     setResult(null);
     try {
-      const storedPdf = localStorage.getItem('insurance_pdf_data');
-      let pdfPolicyData = storedPdf ? JSON.parse(storedPdf) : null;
-      if (pdfPolicyData && pdfPolicyData.extracted) {
-        pdfPolicyData = pdfPolicyData.extracted;
-      }
-      if (pdfPolicyData) {
-        delete pdfPolicyData.full_text;
-        delete pdfPolicyData.raw_text_snippet;
-      }
+      const ctx = getPolicyContext();
+
+      console.log("[Eligibility] Sending request with context:", {
+        hasContext: !!ctx,
+        insurer: ctx?.insurer,
+        treatments: ctx?.covered_treatments?.length,
+      });
 
       const res = await fetch('/api/eligibility', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           treatment: form.treatment,
-          policy: form.policy,
+          policy: form.policy || policyData?.insurer || "",
           age: parseInt(form.age, 10),
           waiting_period_served_days: parseInt(form.waiting_period_served_days, 10),
-          pdf_policy: pdfPolicyData,
+          pdf_policy: ctx,
+          policy_context: ctx,
         }),
       });
       if (!res.ok) throw new Error(`Error ${res.status}`);
-      setResult(await res.json());
+      const resultData = await res.json();
+      console.log("[Eligibility] Result:", resultData);
+      setResult(resultData);
     } catch {
       setError('Could not reach backend. Make sure FastAPI server is running on port 8000.');
     } finally {
@@ -192,16 +196,16 @@ export default function EligibilityChecker() {
 
         {/* Policy context banner */}
         {!optLoading && (
-          pdfDetected ? (
+          pdfUploaded ? (
             <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm font-dm"
               style={{ background: 'rgba(0,212,170,0.08)', border: '1px solid rgba(0,212,170,0.2)', color: '#00D4AA' }}>
               <ShieldCheck size={16} />
-              Using your uploaded{' '}
-              <strong>{pdfPolicy.policy_name || pdfPolicy.insurer || 'policy'}</strong>
-              {' '}as primary source
-              {pdfPolicy.covered_treatments?.length > 0 && (
+              ✓ Using your uploaded{' '}
+              <strong>{policyData?.insurer || policyData?.policy_name || 'policy'}</strong>
+              {' '}as ground truth
+              {policyData?.covered_treatments?.length > 0 && (
                 <span className="ml-1 text-xs opacity-70">
-                  ({pdfPolicy.covered_treatments.length} treatments detected)
+                  ({policyData.covered_treatments.length} treatments detected)
                 </span>
               )}
             </div>
@@ -209,7 +213,7 @@ export default function EligibilityChecker() {
             <div className="flex items-center gap-2.5 px-4 py-3 rounded-xl text-sm font-dm"
               style={{ background: 'rgba(255,214,0,0.07)', border: '1px solid rgba(255,214,0,0.2)', color: '#FFD600' }}>
               <AlertTriangle size={16} />
-              No PDF uploaded — using generic policy database. Upload PDF for accurate results.
+              ⚠ No PDF uploaded — using generic policy database. Upload PDF for accurate results.
             </div>
           )
         )}
@@ -241,7 +245,7 @@ export default function EligibilityChecker() {
 
           <div>
             <label className="block text-xs font-dm font-medium mb-1.5" style={{ color: '#8892A4' }}>Policy</label>
-            {pdfDetected ? (
+            {pdfUploaded ? (
               <div className="flex items-center gap-2">
                 <input
                   type="text"

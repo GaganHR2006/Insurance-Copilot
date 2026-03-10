@@ -4,7 +4,7 @@ import { CloudUpload, CheckCircle2, FileText, X } from 'lucide-react';
 import { useUpload } from '../context/UploadContext';
 
 export default function PolicyUpload() {
-  const { handleUploadSuccess, resetUpload } = useUpload();
+  const { handleUploadSuccess, resetUpload, storePolicy } = useUpload();
   const [file, setFile] = useState(null);
   const [dragOver, setDragOver] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -42,30 +42,18 @@ export default function PolicyUpload() {
 
       const data = await res.json();
 
-      // Save extracted text to context (limit size slightly just in case it's huge)
-      const extractedText = data?.extracted_text || data?.text || "";
-      const content = extractedText.slice(0, 5000);
-      const policyName = file.name.replace(/\.[^/.]+$/, "");
+      console.log("[Upload] Raw API response:", data);
 
-      localStorage.setItem(
-        'insurance_policy_context',
-        `I am attaching my insurance policy document titled '${policyName}'. ` +
-        `Here is the extracted text from the PDF:\n\n${content}\n\n` +
-        `Please use this specific policy data to answer my next questions.`
-      );
+      // Pass the ENTIRE response — storePolicy handles any shape
+      const saved = storePolicy(data);
 
-      // Clean up the massive text fields before saving to avoid 413 Payload Too Large
-      const cleanData = JSON.parse(JSON.stringify(data));
-      if (cleanData.extracted_text) delete cleanData.extracted_text;
-      if (cleanData.text) delete cleanData.text;
-      if (cleanData.extracted && cleanData.extracted.full_text) delete cleanData.extracted.full_text;
-      if (cleanData.extracted && cleanData.extracted.raw_text_snippet) delete cleanData.extracted.raw_text_snippet;
-
-      // Save the structured JSON for the dashboard/eligibility functions 
-      localStorage.setItem('insurance_pdf_data', JSON.stringify(cleanData));
-
-      setUploaded(true);
-      handleUploadSuccess(data);
+      if (saved) {
+        console.log("[Upload] Success. Insurer:", saved.insurer);
+        setUploaded(true);
+        handleUploadSuccess(data);
+      } else {
+        console.error("[Upload] storePolicy returned null");
+      }
     } catch (err) {
       setError(err.message || 'Error parsing PDF. Please try a different document.');
     } finally {

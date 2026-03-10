@@ -15,6 +15,8 @@ router = APIRouter()
 
 class RiskScoreRequest(BaseModel):
     policy_text: Optional[str] = ""   # Raw text from uploaded PDF
+    policy_context: Optional[dict] = None
+    pdf_policy: Optional[dict] = None
 
 
 class RiskFactor(BaseModel):

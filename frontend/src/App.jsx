@@ -44,11 +44,47 @@ function Layout() {
   );
 }
 
+function DebugBar() {
+  const raw = localStorage.getItem("ic_policy")
+    || localStorage.getItem("insurance_copilot_policy")
+    || localStorage.getItem("insurance_pdf_data")
+    || localStorage.getItem("policy")
+    || localStorage.getItem("uploadedPolicy")
+    || localStorage.getItem("policyData");
+
+  return (
+    <div style={{
+      position: "fixed", bottom: 0, left: 0, right: 0,
+      background: "#1a2235", borderTop: "2px solid #00BFA5",
+      padding: "6px 12px", fontSize: "11px",
+      color: raw ? "#10B981" : "#EF4444",
+      zIndex: 99999, display: "flex", gap: "16px"
+    }}>
+      <span>LocalStorage: {raw ? "✓ HAS DATA" : "✗ EMPTY"}</span>
+      {raw && (() => {
+        try {
+          const parsed = JSON.parse(raw);
+          return (
+            <>
+              <span>Insurer: {parsed?.insurer ?? "null"}</span>
+              <span>Treatments: {parsed?.covered_treatments?.length ?? 0}</span>
+              <span>Full text: {parsed?.full_text?.length ?? 0} chars</span>
+            </>
+          );
+        } catch {
+          return <span>✗ INVALID JSON</span>;
+        }
+      })()}
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <UploadProvider>
       <BrowserRouter>
         <Layout />
+        <DebugBar />
       </BrowserRouter>
     </UploadProvider>
   );

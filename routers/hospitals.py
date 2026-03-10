@@ -176,6 +176,7 @@ class HospitalSearchRequest(BaseModel):
     city: Optional[str] = None
     treatment: Optional[str] = None
     pdf_policy: Optional[Dict[str, Any]] = Field(default_factory=dict)
+    policy_context: Optional[Dict[str, Any]] = Field(default_factory=dict)
 
 
 @router.post("/search")
@@ -188,7 +189,7 @@ async def search_hospitals(request: HospitalSearchRequest):
     city = request.city
     treatment = request.treatment
     all_hospitals = load_all_hospitals()
-    pdf_policy    = request.pdf_policy or {}
+    pdf_policy    = request.pdf_policy or request.policy_context or {}
     user_insurer  = pdf_policy.get("insurer")
     user_covered  = [norm(t) for t in pdf_policy.get("covered_treatments", [])]
 
