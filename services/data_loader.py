@@ -136,58 +136,8 @@ def get_network_for_hospital(hospital_id: str, hospital_name: str) -> Optional[d
 
 # ── Session-level PDF policy store (disk-backed, survives hot-reload) ─────────
 
-_SESSION_FILE = os.path.join(DATA_DIR, "session_policy.json")
-_policy_store = {"data": {}}
-
-def store_pdf_policy(policy_data: dict):
-    """Persist extracted PDF policy to memory AND disk."""
-    _policy_store["data"] = policy_data
-    try:
-        from utils.debug_logger import log
-        log("store_pdf_policy", {
-            "insurer": policy_data.get("insurer"),
-            "policy_name": policy_data.get("policy_name"),
-            "freebies_count": len(policy_data.get("freebies", [])),
-            "covered_treatments": policy_data.get("covered_treatments", []),
-            "keys_stored": list(policy_data.keys())
-        })
-    except ImportError:
-        pass
-        
-    try:
-        with open(_SESSION_FILE, "w", encoding="utf-8") as f:
-            json.dump(policy_data, f, ensure_ascii=False, indent=2)
-    except Exception as e:
-        print(f"[WARN] Could not persist session_policy.json: {e}")
-
-def get_pdf_policy() -> dict:
-    """Return uploaded PDF policy data, loading from disk if memory is empty."""
-    if not _policy_store["data"]:
-        try:
-            if os.path.exists(_SESSION_FILE):
-                with open(_SESSION_FILE, "r", encoding="utf-8") as f:
-                    _policy_store["data"] = json.load(f)
-        except Exception as e:
-            print(f"[WARN] Could not load session_policy.json: {e}")
-            
-    data = _policy_store["data"]
-    try:
-        from utils.debug_logger import log
-        log("get_pdf_policy", {
-            "has_data": bool(data),
-            "insurer": data.get("insurer"),
-            "freebies_count": len(data.get("freebies", []))
-        })
-    except ImportError:
-        pass
-    return data
-
-def clear_pdf_policy():
-    """Clear stored PDF policy from memory and disk."""
-    _policy_store["data"] = {}
-    try:
-        if os.path.exists(_SESSION_FILE):
-            os.remove(_SESSION_FILE)
-    except Exception as e:
-        print(f"[WARN] Could not delete session_policy.json: {e}")
+# Stub — state now lives in frontend localStorage
+def store_pdf_policy(policy_data: dict): pass
+def get_pdf_policy() -> dict: return {}
+def clear_pdf_policy(): pass
 
