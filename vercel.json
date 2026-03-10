@@ -1,8 +1,11 @@
 {
     "version": 2,
+    "env": {
+        "UV_LINK_MODE": "copy"
+    },
     "builds": [
         {
-            "src": "main.py",
+            "src": "api/index.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "50mb"
@@ -11,19 +14,12 @@
     ],
     "routes": [
         {
-            "src": "/api/(.*)",
-            "dest": "main.py"
-        },
-        {
-            "src": "/(upload-policy|chat|risk-score|eligibility|hospitals|bed-availability|notifications)(.*)",
-            "dest": "main.py"
+            "src": "/(.*)",
+            "dest": "api/index.py"
         }
     ],
-    "env": {
-        "UV_LINK_MODE": "copy"
-    },
     "functions": {
-        "main.py": {
+        "api/index.py": {
             "maxDuration": 30
         }
     }
